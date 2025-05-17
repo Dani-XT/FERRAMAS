@@ -6,17 +6,6 @@
 
 // Datatable (jquery)
 $(function () {
-  let borderColor, bodyBg, headingColor;
-
-  if (isDarkStyle) {
-    borderColor = config.colors_dark.borderColor;
-    bodyBg = config.colors_dark.bodyBg;
-    headingColor = config.colors_dark.headingColor;
-  } else {
-    borderColor = config.colors.borderColor;
-    bodyBg = config.colors.bodyBg;
-    headingColor = config.colors.headingColor;
-  }
 
   // Variable declaration for table
   var dt_product_table = $('.datatables-products')
@@ -66,15 +55,15 @@ $(function () {
           responsivePriority: 3,
         },
         {
-          // Sku
+          // cantidad
           targets: 5,
         },
         {
-          // price
+          // precio
           targets: 6,
         },
         {
-          // price
+          // status
           targets: 7,
         },
       ],

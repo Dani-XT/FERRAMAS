@@ -29,21 +29,13 @@
 
 <!-- Product List Table -->
 <div class="card">
-  <div class="card-header">
-    <h5 class="mb-0">Filter</h5>
-    <div class="d-flex justify-content-between align-items-center row pt-4 gap-4 gap-md-0">
-      <div class="col-md-4 product_status"></div>
-      <div class="col-md-4 product_category"></div>
-      <div class="col-md-4 product_stock"></div>
-    </div>
-  </div>
+  <a href="{% url  'productos-add' %}" class="btn">Agregar</a>
   <div class="card-datatable table-responsive">
     <table class="datatables-products table">
       <thead>
         <tr>
           <th></th>
           <th></th>
-          
           <th>producto</th>
           <th>categoria</th>
           <th>stock</th>
@@ -53,6 +45,7 @@
         </tr>
       </thead>
       <tbody>
+        {% if productos %}
         <td></td>
         <td></td>
 
@@ -115,12 +108,11 @@
         
         <!-- Status -->
         <td>
-          <span class="badge rounded-pill bg-label-succes" text-capitalized>ACTIVE</span>
+          <span class="badge rounded-pill bg-succes" text-capitalized>ACTIVE</span>
         </td>
 
         <td>$Precio</td>
-        <td></td>
-
+        {% endif %}
       </tbody>
     </table>
   </div>
