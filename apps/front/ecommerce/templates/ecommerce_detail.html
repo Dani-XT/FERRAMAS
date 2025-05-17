@@ -1,0 +1,99 @@
+{% extends layout_path %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}eCommerce Add Product - Apps{% endblock %}
+
+{% block vendor_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'vendor/libs/quill/typography.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/quill/katex.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/quill/editor.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/select2/select2.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/dropzone/dropzone.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/flatpickr/flatpickr.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/tagify/tagify.css' %}" />
+{% endblock vendor_css %}
+
+{% block vendor_js %}
+{{ block.super }}
+<script src="{% static 'vendor/libs/quill/katex.js' %}"></script>
+<script src="{% static 'vendor/libs/quill/quill.js' %}"></script>
+<script src="{% static 'vendor/libs/select2/select2.js' %}"></script>
+<script src="{% static 'vendor/libs/dropzone/dropzone.js' %}"></script>
+<script src="{% static 'vendor/libs/jquery-repeater/jquery-repeater.js' %}"></script>
+<script src="{% static 'vendor/libs/flatpickr/flatpickr.js' %}"></script>
+<script src="{% static 'vendor/libs/tagify/tagify.js' %}"></script>
+{% endblock vendor_js %}
+
+{% block page_js %}
+{{ block.super }}
+<script src="{% static 'js/app-ecommerce-product-detail.js' %}"></script>
+{% endblock page_js %}
+
+{% block page_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'vendor/css/pages/app-ecommerce-detail.css' %}" />
+{% endblock page_css %}
+
+{% block content %}
+<section class="section-py bg-body first-section-pt">
+  <div class="container">
+
+    <div class="row">
+
+      <!-- First column-->
+      <div class="col-12 col-lg-8">
+        <!-- Product Information -->
+
+        <!-- Media -->
+        <div class="card mb-6">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0 card-title">Imagen del Producto</h5>
+          </div>
+          <div class="card-body">
+            <img src="{{ id_producto.imagen.url }}" class="card-img-top product-image" alt="{{ id_producto.nombre }}">
+          </div>
+        </div>
+        <!-- /Media -->
+      </div>
+      <!-- /Second column -->
+
+      <!-- Second column -->
+      <div class="col-12 col-lg-4">
+        <!-- Pricing Card -->
+        <div class="card mb-6">
+          <form id="formDetailProduct" action="POST">
+            <div class="card-header">
+              <h3 class="card-title mb-0">{{id_producto.nombre}}</h3>
+            </div>
+            <div class="card-body">
+              <!-- Base Price -->
+              <div class="d-flex flex-wrap align-items-center mb-3">
+                <div class="h4 mb-0 me-3">${{id_producto.precio}}</div>
+                <span class="text-nowrap">
+                  <span class="badge rounded-pill bg-success me-4">Disponible</span>
+                </span>
+              </div>
+              <p class="fs-sm mb-3">{{id_producto.descripcion}}</p>
+              
+              <div class="d-flex gap-3 mb-4">
+                <div class="count-input d-inline-flex flex-shrink-0 overflow-hidden align-items-center border rounded" aria-label="Count input">
+                  <button type="button" class="btn btn-icon btn-lg"><i class="ri-subtract-line"></i></button>
+                  <input class="form-control p-0 form-control-lg border-0 text-center" min="1" max="{{id_producto.stock}}" readonly="" type="number" value="1">
+                  <button type="button" class="btn btn-icon btn-lg"><i class="ri-add-line"></i></button>
+                </div>
+                <button type="button" class="w-100 btn btn-dark btn-lg">Agregar al carro</button>
+              </div>
+              
+            </div>
+          </form>
+        </div>
+        <!-- /Pricing Card -->
+      </div>
+      <!-- /Second column -->
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends layout_path %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}Carousel - UI elements{% endblock %}
+
+{% block vendor_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'vendor/libs/swiper/swiper.css' %}" />
+{% endblock vendor_css %}
+
+{% block vendor_js %}
+{{ block.super }}
+<script src="{% static 'vendor/libs/swiper/swiper.js' %}"></script>
+{% endblock vendor_js %}
+
+{% block page_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'vendor/css/pages/ui-carousel.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/css/pages/app-ecommerce-list.css' %}" />
+{% endblock page_css %}
+
+{% block page_js %}
+{{ block.super }}
+<script src="{% static 'js/ui-carousel.js' %}"></script>
+{% endblock page_js %}
+
+{% block content %}
+<section class="section-py first-section-pt help-center-header position-relative overflow-hidden">
+  <img class="banner-bg-img z-n1" src="{% static 'img/pages/header-' %}{{ COOKIES.style|default:style }}.png" alt="Help center header" data-app-light-img="pages/header-light.png" data-app-dark-img="pages/header-dark.png">
+    <div class="col-12 position-relative">
+        <div class="swiper text-white" id="swiper-multiple-slides">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image:url({% static 'img/elements/13.jpg' %})"></div>
+                <div class="swiper-slide" style="background-image:url({% static 'img/elements/19.jpg' %})"></div>
+                <div class="swiper-slide" style="background-image:url({% static 'img/elements/18.jpg' %})"></div>
+                <div class="swiper-slide" style="background-image:url({% static 'img/elements/7.jpg' %})"></div>
+                <div class="swiper-slide" style="background-image:url({% static 'img/elements/20.jpg' %})"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section-py">
+    <div class="container">
+
+        <h4 class="text-center mb-6">Tienda</h4>
+
+
+        <div class="row">
+            {% for producto in productos %}
+            <div class="col-md-4 col-ms-3 mb-4">
+                <div class="card h-100 shadow-lg p-2">
+                    <a href="{% url 'ecommerce-detail' producto.id_producto %}">
+                        <img src="{{ producto.imagen.url }}" class="card-img-top product-image" alt="{{ producto.nombre }}">
+                    </a>
+                    <div class="card-body d-flex flex-column">
+                        <a href="{% url 'ecommerce-detail' producto.id_producto %}">
+                            <h5 class="card-title">{{producto.nombre}}</h5>
+                        </a>
+                        <p class="card-text">{{producto.descripcion}}</p>
+                        <div class="mt-auto">
+                            <p class="text-primary fs-5 fw-bold">${{producto.precio}}</p>
+                            <a href="#" class="btn btn-primary w-100">Agregar al carrito</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Productos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        ul li a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        ul li a:hover {
+            color: #0056b3;
+        }
+
+        ul li form {
+            display: inline;
+        }
+
+        ul li form button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        ul li form button:hover {
+            background-color: #c82333;
+        }
+
+        a.add-product {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        a.add-product:hover {
+            background-color: #0056b3;
+        }
+
+        a.panel-link {
+            display: block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+            text-align: center;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        a.panel-link:hover {
+            color: #0056b3;
+        }
+
+        .empty-list {
+            color: #777;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Productos</h1>
+    <a href="{% url 'productos_add' %}" class="add-product">Agregar Producto</a>
+    <ul>
+        {% for producto in productos %}
+        <li>
+            {{ producto.nombre }}
+            <a href="{% url 'productos_find_edit' producto.pk %}">Editar</a>
+            <form method="post" action="{% url 'productos_del' producto.pk %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit">Eliminar</button>
+            </form>
+        </li>
+        {% empty %}
+        <li class="empty-list">No hay productos registrados.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'crud_home' %}" class="panel-link">Volver al Panel Principal</a>
+</body>
+</html>

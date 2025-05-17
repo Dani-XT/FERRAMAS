@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Usuarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul li a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        ul li a:hover {
+            color: #0056b3;
+        }
+
+        ul li span {
+            color: #777;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        a.create-user {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        a.create-user:hover {
+            background-color: #0056b3;
+        }
+
+        a.panel-link {
+            display: block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+            text-align: center;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        a.panel-link:hover {
+            color: #0056b3;
+        }
+
+        .empty-list {
+            color: #777;
+            margin-top: 10px;
+        }
+
+        .edit-button {
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-button:hover {
+            background-color: #138496;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Usuarios</h1>
+    <a href="{% url 'usuarios_add' %}" class="create-user">Crear Nuevo Usuario</a>
+    <ul>
+        {% for usuario in usuarios %}
+        <li>
+            <div>
+                <a href="{% url 'usuarios_find_edit' usuario.pk %}">{{ usuario.username }}</a>
+                <a href="{% url 'usuarios_find_edit' usuario.pk %}" class="edit-button">Editar</a>
+                (<a href="{% url 'usuarios_del' usuario.pk %}">Eliminar</a>)
+            </div>
+        </li>
+        {% empty %}
+        <li class="empty-list">No hay usuarios registrados.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'crud_home' %}" class="panel-link">Volver al Panel Principal</a>
+</body>
+</html>

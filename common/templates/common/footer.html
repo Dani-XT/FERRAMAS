@@ -1,0 +1,51 @@
+{% if 'auth' in request.path or 'crud' in request.path%}
+
+{% else %}
+<div class="custom-footer">
+    <footer class="py-5 container">
+      <div class="row">
+        <div class="col">
+          <h5 class="title-footer">Compañia</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="{% url 'about-us' %}" class="nav-link link-secondary p-0">Nosotros</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'about-us' %}" class="nav-link link-secondary p-0">Nuestros Servicios</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'about-us' %}" class="nav-link link-secondary p-0">Politica de Privacidad</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'about-us' %}" class="nav-link link-secondary p-0">Afiliate</a></li>
+          </ul>
+        </div>
+  
+        <div class="col">
+          <h5 class="title-footer">Ayuda</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link link-secondary p-0">Preguntas</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link link-secondary p-0">Compras</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link link-secondary p-0">Envios</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link link-secondary p-0">Estatus de la Orden</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link link-secondary p-0">Pago</a></li>
+          </ul>
+        </div>
+  
+        <div class="col">
+          <h5 class="title-footer">Tienda</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="# class="nav-link link-secondary p-0">Productos</a></li>
+          </ul>
+        </div>
+
+        <div class="col">
+            <h5 class="title-footer">Siguenos</h5>
+            <ul class="list-unstyled d-flex">
+                <li class="ms-3 text-white"><i class="bi bi-facebook"></i></li>
+                <li class="ms-3 text-white"><i class="bi bi-instagram"></i></li>
+                <li class="ms-3 text-white"><i class="bi bi-twitter"></i></li>
+                <li class="ms-3 text-white"><i class="bi bi-linkedin"></i></li>
+            </ul>
+        </div>
+      </div>
+  
+      <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+        <p class="text-white">&copy; {{time}} Ferremas, SPA. 2024.</p>
+      </div>
+    </footer>
+</div>
+{% endif %}

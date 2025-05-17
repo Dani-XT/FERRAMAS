@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Editoriales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .add-link, .back-link {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .add-link:hover, .back-link:hover {
+            color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        li:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .edit-link, .delete-button {
+            margin-left: 10px;
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .edit-link:hover, .delete-button:hover {
+            color: #0056b3;
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Editoriales</h1>
+    <a class="add-link" href="{% url 'editoriales_add' %}">Agregar Editorial</a>
+
+    <ul>
+        {% for editorial in editoriales %}
+        <li>
+            {{ editorial.nombre }} - {{ editorial.descripcion }}
+            <a class="edit-link" href="{% url 'editoriales_find_edit' editorial.pk %}">Editar</a>
+            <form method="post" action="{% url 'editoriales_del' editorial.pk %}" style="display: inline;">
+                {% csrf_token %}
+                <button class="delete-button" type="submit">Eliminar</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <a class="back-link" href="{% url 'crud_home' %}">Volver al Panel Principal</a>
+</body>
+</html>

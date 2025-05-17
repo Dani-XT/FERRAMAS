@@ -1,0 +1,48 @@
+{
+  "menu": [
+    {
+      "name": "Home",
+      "icon": "menu-icon tf-icons ri-home-4-line",
+      "slug": "home",
+      "url": "admin-home"
+    },
+    
+    {
+      "menu_header": "Accesos",
+      "slug": "accesos"
+    },
+    {
+     "icon": "menu-icon tf-icons ri-lock-2-line",
+      "name": "Roles",
+      "slug": "roles-list",
+      "url": "roles-list"
+    },
+
+    {
+      "menu_header": "Equipos",
+      "slug": "Equipos"
+    },
+    {
+      "icon": "menu-icon tf-icons ri-home-4-line",
+      "name": "Productos",
+      "slug": "productos-list",
+      "url": "productos-list"
+    },
+
+    {
+      "menu_header": "Frontend",
+      "slug": "front"
+    },
+    {
+      "icon": "menu-icon tf-icons ri-home-4-line",
+      "name": "Home Frontend",
+      "slug": "home",
+      "url": "home"
+    }
+
+  ]
+}
+
+    
+
+

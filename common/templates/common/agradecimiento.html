@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferramas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/estilo-agradecimiento.css'%}">
+</head>
+<body>
+    {% block content %}
+    <div class="formulario">
+        <h1>Post Venta</h1>
+        <form method="post">
+            <div class="email">
+                <p>
+                    ¡Gracias por elegirnos para tu compra de ferramas! Nos encanta ver cómo nuestros clientes encuentran historias que los emocionan y los transportan a mundos fantásticos. Tu apoyo significa mucho para nosotros y nos impulsa a seguir trayendo lo mejor del universo del cómic a tu alcance.   
+                </p>
+                <p>
+                    ¡Esperamos que disfrutes de tu nueva adquisición y que regreses pronto en busca de más aventuras!
+                </p>
+                <p>
+                    ¡Gracias de nuevo por ser parte de nuestra comunidad de aficionados a los ferremas!
+                </p>
+                <p>
+                    Atentamente,
+                    Ferremas
+                </p>
+                <a href="{% url 'comics' %}">
+                    <input type="button" value="Volver a la tienda">
+                </a>
+            </div>
+        </form>
+    </div>
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

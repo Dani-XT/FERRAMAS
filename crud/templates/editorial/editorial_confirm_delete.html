@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Eliminación de Editorial</title>
+</head>
+<body>
+    <h1>Confirmar Eliminación de Editorial</h1>
+    <p>¿Estás seguro de que deseas eliminar "{{ editorial.nombre }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+    </form>
+    <a href="{% url 'editoriales_list' %}">Cancelar</a>
+</body>
+</html>

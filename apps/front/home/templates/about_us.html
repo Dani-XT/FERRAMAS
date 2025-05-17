@@ -1,0 +1,32 @@
+{% extends 'common/index.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/styles-contactos.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="containers-form">
+    <div class="info-form">
+        <h2>Sobre Nosotros</h2>
+        <p>¡Quieres saber mas de nosotros!</p>
+        <p>Bienvenido a Ferremas, donde te sumergirás en emocionantes historias y personajes inolvidables. Ofrecemos una amplia selección de cómics, desde clásicos hasta las últimas novedades, con un enfoque en la calidad y la accesibilidad. Nuestra plataforma fácil de usar está diseñada para conectar a los aficionados y apoyar a los talentosos creadores. Únete a nuestra comunidad y vive aventuras épicas con Comics Sharingann.
+        </p>
+        <p>¡Gracias por ser parte de nuestra comunidad en Ferremas!</p>
+        <a href="tel:937742538"><i class="fa fa-phone"></i> 937742538</a>
+        <a href="mailto:comics.sharingann@gmail.com"><i class="fa fa-envelope"></i> ferremas@gmail.com</a>
+        <a href="https://maps.app.goo.gl/qHaf4NPuSf9iZu1L7"><i class="fa fa-map-marked"></i> San Bernardo,Chile</a>
+    </div>
+    <form action="#" autocomplete="off">
+        <input type="text" name="nombre" placeholder="Tu Nombre" class="campo">
+        <input type="email" name="email" placeholder="Tu Email" class="campo">
+        <textarea name="mensaje" placeholder="Tu Mensaje..."></textarea>
+        <input type="submit" name="enviar" value="Enviar Mensaje" class="btn-enviar">
+    </form>
+</div>
+<div class="centrar margin-top">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3332.292076222675!2d-70.68076012431276!3d-33.363439973424086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c7025c925e0f%3A0x7f2f6a657c08d14a!2sDuoc%20UC%3A%20Sede%20Plaza%20Norte!5e0!3m2!1ses!2scl!4v1713574594211!5m2!1ses!2scl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+{% endblock %}

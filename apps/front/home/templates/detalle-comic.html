@@ -1,0 +1,48 @@
+{% extends 'common/index.html' %}
+
+{% block content %}
+    <section class="py-5">
+      <div class="container px-4 px-lg-5 my-5">
+          <div class="row gx-4 gx-lg-5 align-items-center">
+              <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{ comic.imagen.url }}" alt="..."></div>
+              <div class="col-md-6">
+                  <div class="small mb-1">{{ comic.editorial}}</div>
+                  <h1 class="display-5 fw-bolder">{{ comic.nombre }}</h1>
+                  <div class="fs-5 mb-3">
+                      
+                      <span>${{comic.precio}}</span>
+                  </div>
+                  <span>Tipo: {{ comic.tipo }}</span>
+                  <br>
+                  <br>
+                  <p class="lead">{{comic.descripcion}}</p>
+                  <div class="d-flex">
+                      <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem">
+                      {% if user.is_authenticated %}
+                      <a href="{% url 'agregar' comic.id_producto %}" style="display: inline-block; padding: 10px 20px; background-color: #ff0000; color: #fff; text-decoration: none; border: none; border-radius: 5px;"
+                      class="btn btn-sm text-bg-danger bg-danger">Comprar</a>
+                      {% else %}
+                      <button type="button" style="display: inline-block; padding: 10px 20px; background-color: #ff0000; color: #fff; text-decoration: none; border: none; border-radius: 5px;"
+                      class="btn btn-sm text-bg-danger btn-comprar" id="btn-comprar" data-bs-toggle="modal" data-bs-target="#error-compra">
+                          Comprar
+                      </button>
+                      {% endif %}
+                      <a href="{% url 'comics' %}" class="btn btn-outline-dark flex-shrink-0">Volver Atrás</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+<div class="modal fade" id="error-compra" tabindex="-1" aria-labelledby="error-compra" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-danger text-bg-danger">
+      <div class="modal-body">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <strong>Error:</strong> Debes iniciar sesión para realizar una compra.
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
