@@ -23,14 +23,19 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+    # front
     path("", include("apps.front.home.urls")),
     path("", include("apps.front.ecommerce.urls")),
 
+    # Admin
     path("admin/", include("apps.admin_home.urls")),
     path("admin/", include("apps.access.roles.urls")),
     path("admin/", include("apps.usuarios.urls")),
     path("admin/", include("apps.productos.producto.urls")),
     path("admin/", include("auth.urls")),
+
+    # Api
+    path("api/", include("api.urls")),
 
     
     
