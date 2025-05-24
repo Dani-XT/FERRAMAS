@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'apps.admin_home',
     'apps.productos.producto',
     'apps.access.roles',
+    'apps.usuarios',
 
     'common',
     'crud',
