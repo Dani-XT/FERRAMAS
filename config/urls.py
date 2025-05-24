@@ -28,6 +28,7 @@ urlpatterns = [
 
     path("admin/", include("apps.admin_home.urls")),
     path("admin/", include("apps.access.roles.urls")),
+    path("admin/", include("apps.usuarios.urls")),
     path("admin/", include("apps.productos.producto.urls")),
     path("admin/", include("auth.urls")),
 
