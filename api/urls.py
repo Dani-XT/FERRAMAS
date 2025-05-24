@@ -1,10 +1,6 @@
-from django.urls import path
-from .views import ProductoListAPIView
+from django.urls import path, include
+
 
 urlpatterns = [
-    path(
-        "productos/", 
-        ProductoListAPIView.as_view(), 
-        name="api-productos-list"
-    ),
+    path("", include("api.productos.router")),
 ]

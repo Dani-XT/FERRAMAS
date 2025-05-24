@@ -1,8 +1,8 @@
-from rest_framework import generics
+from rest_framework import viewsets
 # from apps.productos.producto.models import Producto
 from apps.front.home.models import Producto
 from .serializer import ProductoSerializer
 
-class ProductoListAPIView(generics.ListAPIView):
+class ProductoListAPIView(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
