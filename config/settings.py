@@ -180,7 +180,7 @@ EMAIL_HOST_PASSWORD = ""
 
 # Loginyour mail
 # ------------------------------------------------------------------------------
-LOGIN_URL = "/login/"
+LOGIN_URL = "login"
 LOGOUT_REDIRECT_URL = "/home/"
 
 # Session

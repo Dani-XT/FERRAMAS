@@ -1,11 +1,11 @@
 from rest_framework.routers import DefaultRouter
-from .views import ProductoListAPIView
+from .views import ProductoApiView
 
 router = DefaultRouter()
 
 router.register(
     r'productos',
-    ProductoListAPIView,
+    ProductoApiView,
     basename='productos'
 )
 
