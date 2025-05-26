@@ -6,7 +6,7 @@ router = DefaultRouter()
 router.register(
     r'productos',
     ProductoApiView,
-    basename='productos'
+    basename='productoss'
 )
 
 urlpatterns = router.urls

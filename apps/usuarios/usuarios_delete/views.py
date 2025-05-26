@@ -18,6 +18,6 @@ class UsuariosDeleteView(PermissionRequiredMixin, DeleteView):
         usuario = get_object_or_404(User, pk=pk)
         usuario.delete()
 
-        messages.success(request, f"El Usuario '{usuario.name}' fue eliminado correctamente")
+        messages.success(request, f"El Usuario '{usuario.username}' fue eliminado correctamente")
         return redirect('usuarios-list')
         

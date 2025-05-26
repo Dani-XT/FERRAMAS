@@ -25,4 +25,16 @@ class RolesListView(PermissionRequiredMixin, TemplateView):
         return context
     
     def get_all_usergroup(self):
-        return Group.objects.all().order_by('id')
+        grupos = Group.objects.all().order_by('id')
+        data = []
+        for grupo in grupos:
+            usuarios = grupo.user_set.all()
+            data.append({
+                "id": grupo.id,
+                "name": grupo.name,
+                "usuarios": usuarios,
+                "total": usuarios.count()
+            })
+
+        print(data)
+        return data

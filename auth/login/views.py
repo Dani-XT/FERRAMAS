@@ -53,7 +53,7 @@ class LoginView(AuthView):
                 # Redirect to the page the user was trying to access before logging in
                 if "next" in request.POST:
                     return redirect(request.POST["next"])
-                else: # Redirect to the home page or another appropriate page
+                else: 
                     return redirect("admin-home")
             else:
                 messages.error(request, "Please enter a valid username.")
