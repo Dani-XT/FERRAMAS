@@ -2,30 +2,36 @@ from django.urls import path
 from django.contrib.auth.decorators import login_required
 
 # Views personalizados
-from apps.access.roles.roles_list.views import RolesListView
-from apps.access.roles.roles_add.views import RolesAddView
-from apps.access.roles.roles_update.views import RolesUpdateView
-from apps.access.roles.roles_delete.views import RolesDeleteView
+from apps.access.roles.views import RolesView
+
+from apps.access.roles.grupos_add_update.views import GruposAddUpdateView
+from apps.access.roles.grupos_delete.views import GruposDeleteView
+from apps.access.roles.grupos_detail.views import GruposDetailView
 
 urlpatterns = [
     path(
         "access/roles/",
-        login_required(RolesListView.as_view(template_name="roles_list.html")),
+        login_required(RolesView.as_view(template_name="roles_list.html")),
         name="roles-list",
     ),
     path(
-        "access/roles/add/",
-        login_required(RolesAddView.as_view(template_name="roles_add.html")),
-        name="roles-add",
+        "access/roles/grupos/add/",
+        login_required(GruposAddUpdateView.as_view(template_name="grupos_add_update.html")),
+        name="grupos-add"
     ),
     path(
-        "access/roles/update/<int:pk>/",
-        login_required(RolesUpdateView.as_view(template_name="roles_update.html")),
-        name="roles-update",
+        "access/roles/grupos/detail/<int:pk>/",
+        login_required(GruposDetailView.as_view(template_name="grupos_add_update.html")),
+        name="grupos-detail"
     ),
     path(
-        "access/roles/delete/<int:pk>/",
-        login_required(RolesDeleteView.as_view()),
-        name="roles-delete",
+        "access/roles/grupos/update/<int:pk>/",
+        login_required(GruposAddUpdateView.as_view(template_name="grupos_add_update.html")),
+        name="grupos-update"
+    ),
+    path(
+        "access/roles/grupos/delete/<int:pk>/",
+        login_required(GruposDeleteView.as_view()),
+        name="grupos-delete"
     )
 ]

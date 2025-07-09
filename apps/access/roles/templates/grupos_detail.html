@@ -1,0 +1,239 @@
+{% extends layout_path %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}Account settings - Account{% endblock %}
+
+{% block vendor_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'vendor/libs/datatables-bs5/datatables.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/pickr/pickr-themes.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/perfect-scrollbar/perfect-scrollbar.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/css/pages/front-page-pricing.css' %}" />
+{% endblock vendor_css %}
+
+{% block vendor_js %}
+{{ block.super }}
+<script src="{% static 'vendor/libs/datatables-bs5/datatables-bootstrap5.js' %}"></script>
+<script src="{% static 'vendor/libs/autosize/autosize.js' %}"></script>
+<script src="{% static 'vendor/libs/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+<script src="{% static 'vendor/libs/pickr/pickr.js' %}"></script>
+
+{% endblock vendor_js %}
+
+{% block page_js %}
+{{ block.super }}
+<script src="{% static 'js/new/app-roles-add-update.js' %}"></script>
+{% endblock page_js %}
+
+{% block content %}
+
+
+<form class="row" action="" method="post">
+  {% csrf_token %}
+  <!-- Formulario creacion Planes-->
+  <div class="col-12 mb-lg-0 mb-6">
+    <div class="card p-sm-12 p-6">
+      <div class="card-body rounded p-6 pt-2 px-2 text-heading">
+        <div class="row mx-0 px-3">
+          <!-- Header descripcion plan -->
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex svg-illustration align-items-center gap-3 mb-6">
+              <span class="app-brand-logo demo">{% include 'partials/logo.html' %}</span>
+              <span class="mb-0 app-brand-text fw-semibold">{% get_theme_variables 'template_name' %}</span>
+            </div>
+            <h6>Nombre del supergrupo</h6>
+          </div>
+          <h4 class="role-title mb-2  pt-2 pb-0">Nombre del Grupo</h4>
+          <p class="pb-4">Descripcion del Grupo</p>
+          <!-- Nombre del plan -->
+          <div class="col-12 mb-3">
+            <div class="form-floating form-floating-outline">
+              <input type="text" id="nombre" name="nombre" class="form-control autosize" placeholder="Ingresa el nombre del Plan" value="" />
+              <label for="nombre">Nombre del Grupo</label>
+            </div>
+          </div>
+          <!-- Descripcion del plan -->
+          <div class="col-12">
+            <div class="form-floating form-floating-outline mb-3">
+              <textarea type="text" id="descripcion" name="descripcion" class="form-control autosize" placeholder="Descripcion del Plan"></textarea>
+              <label for="descripcion">Descripcion</label>
+            </div>
+          </div>
+          <!-- Color -->
+          <div class="col-6">
+            <h6 class="text-muted mb-1">Color:</h6>
+            <div class="classic form-control d-flex align-items-center">
+              <div class="custom-color-picker" data-color-target="grupo_1"></div>
+              <span class="mx-2" data-color-target-text="grupo_1">Sin color asignado</span>
+              <input type="hidden" data-color-target-input="grupo_1" name="bg_color">
+            </div>
+          </div>
+          <!-- Icono -->
+          <div class="col-6">
+            <h6 class="text-muted mb-1">Icono:</h6>
+            <div class="form-control d-flex align-items-center custom-modal text-center" data-icono-target="grupo_1" data-urls="{% url 'modal-iconos' '__icon__' %} " data-search="true">
+              <i class="menu-icon tf-icons ri-add-circle-line ri-22x text-primary" data-icono-target-preview="grupo_1"></i>
+              <span class="mx-2" data-icono-target-text="grupo_1">Sin icono asignado</span>
+              <input type="hidden" data-icono-target-input="grupo_1" name="icono">
+            </div>
+          </div>
+          <!-- Permission table -->
+          <div class="col-12 text-center mt-12 pb-4">
+            <button type="submit" class="btn btn-primary me-3">Submit</button>
+            <a href="" class="btn btn-outline-secondary">Cancel</a>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+  <!-- TODO: NUEVO NUEVO NUEVO DE REAL NO DE CHATGIPITI -->
+
+  <!-- TODO: NUEVO QUE TENGO QUE CONVERTIR A NUEVO -->
+  <section class="section-py pricing-plans-comparison mt-5">
+    <div class="card">
+    
+      <div class="table-responsive border rounded">
+        <table class="table table-striped text-center mb-0">
+          <thead>
+            <tr>
+              <th scope="col">
+                <p class="mb-0">Roles/Permisos</p>
+              </th>
+              <th scope="col">
+                <p class="mb-1">Grupo 1</p>
+                <p class="small fw-normal mb-0 text-body">Rol 1</p>
+              </th>
+              <th scope="col">
+                <p class="mb-0 me-1">Grupo 1</p>
+                <p class="small fw-normal mb-0 text-body">Rol 2</p>
+              </th>
+              <th scope="col">
+                <p class="mb-1">Grupo 2</p>
+                <small class="fw-normal text-capitalize text-body">Rol 1</small>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-heading">Permiso 1</td>
+              <td>
+                <i class="ri-checkbox-circle-line ri-24px text-primary"></i>
+              </td>
+              <td>
+                <i class="ri-checkbox-circle-line ri-24px text-primary"></i>
+              </td>
+              <td>
+                <i class="ri-checkbox-circle-line ri-24px text-primary"></i>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-heading">Permiso 2</td>
+              <td>
+                <i class="ri-close-circle-line ri-24px text-body"></i>
+              </td>
+              <td>
+                <i class="ri-close-circle-line ri-24px text-body"></i>
+              </td>
+              <td>
+                <i class="ri-checkbox-circle-line ri-24px text-primary"></i>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-heading">Permiso 3</td>
+              <td>
+                <i class="ri-close-circle-line ri-24px text-body"></i>
+              </td>
+              <td>
+                <i class="ri-checkbox-circle-line ri-24px text-primary"></i>
+              </td>
+              <td>
+                <i class="ri-checkbox-circle-line ri-24px text-primary"></i>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-heading">Permiso 4</td>
+              <td>
+                <i class="ri-close-circle-line ri-24px text-body"></i>
+              </td>
+              <td>
+                <span class="badge bg-label-primary badge-sm rounded-pill">Add-on Available</span>
+              </td>
+              <td>
+                <i class="ri-checkbox-circle-line ri-24px text-primary"></i>
+              </td>
+            </tr>
+            
+            <tr>
+              <td></td>
+              <td>
+                <a href="/front/payment/" class="btn text-nowrap btn-outline-primary waves-effect">Choose Plan</a>
+              </td>
+              <td>
+                <a href="/front/payment/" class="btn text-nowrap btn-primary waves-effect waves-light">Choose Plan</a>
+              </td>
+              <td>
+                <a href="/front/payment/" class="btn text-nowrap btn-outline-primary waves-effect">Choose Plan</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  
+
+
+
+  <!-- TODO: ANTIGUOOOOOOOOOOOOO -->
+  <div class="col-12 mt-9">
+    <h5 class="mb-0">Role Permissions</h5>
+    <!-- Permission table -->
+    <div class="table-responsive">
+      <table class="table table-flush-spacing">
+        <tbody>
+          <tr>
+            <td class="text-nowrap fw-medium">Permisos Administrador 
+              <i class="ri-information-line" data-bs-toggle="tooltip" data-bs-placement="top" title="Allows a full access to the system"></i>
+            </td>
+            <td>
+              <div class="d-flex justify-content-end">
+                <div class="form-check mb-0">
+                  <input class="form-check-input" type="checkbox" id="selectAll" />
+                  <label class="form-check-label" for="selectAll">Select All</label>
+                </div>
+              </div>
+            </td>
+          </tr>
+          {% for app_model, perms in permisos.items %}
+          <tr>
+            <td class="text-nowrap fw-medium">
+              <div class="form-check">
+                <input class="form-check-input model-selector" type="checkbox" id="checkAll_{{ app_model|slugify }}">
+                <label class="form-check-label" for="checkAll_{{ app_model|slugify }}">{{ app_model|title }}</label>
+              </div>
+            </td>
+            <td>
+              <div class="d-flex justify-content-end flex-wrap">
+                {% for perm in perms %}
+                  <div class="form-check mb-0 me-4 me-lg-12">
+                    <input class="form-check-input permission-checkbox check-{{ app_model|slugify }}" type="checkbox" name="permissions" id="perm{{ perm.id }}" value="{{ perm.id }}">
+                    <label class="form-check-label" for="perm{{ perm.id }}">{{ perm.codename|split:"_"|first|capfirst }}</label>
+                  </div>
+                {% endfor %}
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</form>
+
+<!--/ Add Role Modal -->
+
+{% endblock %}

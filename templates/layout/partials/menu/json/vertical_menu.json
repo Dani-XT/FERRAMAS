@@ -4,7 +4,7 @@
       "name": "Home",
       "icon": "menu-icon tf-icons ri-home-4-line",
       "slug": "home",
-      "url": "admin-home"
+      "url": "admin:home"
     },
     
     {
@@ -42,8 +42,8 @@
     {
       "icon": "menu-icon tf-icons ri-home-4-line",
       "name": "Home Frontend",
-      "slug": "home",
-      "url": "home"
+      "slug": "front:home",
+      "url": "front:home"
     }
 
   ]

@@ -14,7 +14,7 @@
       <!--  Brand demo (display only for navbar-full and hide on below xl) -->
       {% if navbar_full %}
       <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-6">
-        <a href="{% url 'home' %}" class="app-brand-link gap-2">
+        <a href="{% url 'front:home' %}" class="app-brand-link gap-2">
           <span class="app-brand-logo demo">
             {% include 'partials/logo.html' %}
           </span>
@@ -104,7 +104,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end mt-3 py-2">
               <li>
-                <a class="dropdown-item" href="{% url 'home' %}">
+                <a class="dropdown-item" href="{% url 'front:home' %}">
                   <div class="d-flex align-items-center">
                     <div class="flex-shrink-0 me-2">
                       <div class="avatar avatar-online">
@@ -129,13 +129,13 @@
                 <div class="dropdown-divider"></div>
               </li>
               <li>
-                <a class="dropdown-item" href="{% url 'home' %}">
+                <a class="dropdown-item" href="{% url 'front:home' %}">
                   <i class="ri-user-3-line ri-22px me-2"></i>
                   <span class="align-middle">My Profile</span>
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="{% url 'home' %}">
+                <a class="dropdown-item" href="{% url 'front:home' %}">
                   <i class="ri-settings-4-line ri-22px me-2"></i>
                   <span class="align-middle">Settings</span>
                 </a>

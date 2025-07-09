@@ -10,7 +10,7 @@
         <i class="tf-icons ri-menu-fill ri-24px align-middle"></i>
       </button>
       <!-- Mobile menu toggle: End-->
-      <a href="{% url 'home' %}" class="app-brand-link">
+      <a href="{% url 'front:home' %}" class="app-brand-link">
         <span class="app-brand-logo demo">LOGO</span>
         <span class="app-brand-text demo menu-text fw-semibold ms-2 ps-1">{% get_theme_variables 'template_name' %}</span>
       </a>
@@ -23,10 +23,10 @@
       </button>
       <ul class="navbar-nav me-auto p-4 p-lg-0">
         <li class="nav-item">
-          <a class="nav-link fw-medium" aria-current="page" href="{% url 'home' %}">Home</a>
+          <a class="nav-link fw-medium" aria-current="page" href="{% url 'front:home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fw-medium" href="{% url 'ecommerce-list' %}">Tienda</a>
+          <a class="nav-link fw-medium" href="{% url 'front:ecommerce-list' %}">Tienda</a>
         </li>
         <li class="nav-item">
           <a class="nav-link fw-medium" href="#">Nosotros</a>
@@ -45,7 +45,7 @@
 
       {% if request.user.is_authenticated %}
       <li class="nav-item">
-        <a class="nav-link fw-medium" href="{% url 'admin-home' %}">Admin</a>
+        <a class="nav-link fw-medium" href="{% url 'admin:home' %}">Admin</a>
       </li>
       {% endif %}
       {% if has_customizer %}

@@ -16,32 +16,35 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from web_project.views import SystemView
 
-# Servir archivos MEDIA al proyectoED
 from django.conf import settings
 from django.conf.urls.static import static
 
 
+
 urlpatterns = [
-    # front
-    path("", include("apps.front.home.urls")),
-    path("", include("apps.front.ecommerce.urls")),
+    # -------------------- FRONT --------------------
+    path("", include("front.urls")),
 
-    # Admin
-    path("admin/", include("apps.admin_home.urls")),
-    path("admin/", include("apps.access.roles.urls")),
-    path("admin/", include("apps.usuarios.urls")),
-    path("admin/", include("apps.productos.producto.urls")),
-    path("admin/", include("auth.urls")),
+    # -------------------- ADMIN --------------------
+    path("", include("apps.urls")),
+    path("", include("auth.urls")),
 
-    # Api
-    path("api/", include("api.urls")),
+    # -------------------- UTILS --------------------
+    path("utils/", include("apps.utils.urls")),
 
-    
-    
-    path('admin/crud/', include("crud.urls")),
-    path('admin/', admin.site.urls),
+    # -------------------- API --------------------
+    # path("api/", include("api.urls")),
+
+    path('admin/django/default/', admin.site.urls),
 ]
+
+handler404 = SystemView.as_view(template_name="misc_error.html", status=404)
+handler403 = SystemView.as_view(template_name="misc_not_authorized.html", status=403)
+handler400 = SystemView.as_view(template_name="misc_error.html", status=400)
+handler500 = SystemView.as_view(template_name="misc_error.html", status=500)
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

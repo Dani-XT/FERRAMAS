@@ -1,0 +1,144 @@
+{% extends layout_path %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}Crear Rol - Grupos{% endblock %}
+
+{% block vendor_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'vendor/libs/pickr/pickr-themes.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/perfect-scrollbar/perfect-scrollbar.css' %}" />
+
+{% endblock vendor_css %}
+
+{% block vendor_js %}
+{{ block.super }}
+<script src="{% static 'vendor/libs/autosize/autosize.js' %}"></script>
+<script src="{% static 'vendor/libs/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+<script src="{% static 'vendor/libs/pickr/pickr.js' %}"></script>
+{% endblock vendor_js %}
+
+{% block page_js %}
+{{ block.super }}
+<script src="{% static 'js/new/app-roles-add-update.js' %}"></script>
+{% endblock page_js %}
+
+{% block content %}
+
+{% if grupo %}
+<form class="row" action="{% url 'grupos-update' grupo.id %}" method="post">
+{% else %}
+<form class="row" action="{% url 'grupos-add' %}" method="post">
+{% endif %}
+  {% csrf_token %}
+  <!-- Formulario creacion Planes-->
+  <div class="col-12 mb-lg-0 mb-6">
+    <div class="card p-sm-12 p-6">
+      <div class="card-body rounded p-6 pt-2 px-2 text-heading">
+        <div class="row mx-0 px-3">
+          <!-- Header descripcion plan -->
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex svg-illustration align-items-center gap-3 mb-6">
+              <span class="app-brand-logo demo">{% include 'partials/logo.html' %}</span>
+              <span class="mb-0 app-brand-text fw-semibold">{% get_theme_variables 'template_name' %}</span>
+            </div>
+          </div>
+          <h4 class="role-title mb-2  pt-2 pb-0">{% if grupo %}{{grupo.nombre}}{% else %}Crear un nuevo Grupo{% endif %}</h4>
+          <p class="pb-4">La creacion de un nuevo grupo permite tambien realizar jerarquia de los roles existentes</p>
+          <!-- Nombre del plan -->
+          <div class="col-12 mb-3">
+            <div class="form-floating form-floating-outline">
+              <input type="text" id="nombre" name="nombre" class="form-control autosize" placeholder="Ingresa el nombre del Plan" {% if grupo %}value="{{grupo.nombre}}"{% endif %}/>
+              <label for="nombre">Nombre</label>
+            </div>
+          </div>
+          <!-- Descripcion del plan -->
+          <div class="col-12">
+            <div class="form-floating form-floating-outline mb-3">
+              <textarea type="text" id="descripcion" name="descripcion" class="form-control autosize" placeholder="Descripcion del Grupo">{% if grupo %}{{grupo.descripcion}}{% endif %}</textarea>
+              <label for="descripcion">Descripcion</label>
+            </div>
+          </div>
+          <!-- Color -->
+          <div class="col-6">
+            <h6 class="text-muted mb-1">Color:</h6>
+            <div class="classic form-control d-flex align-items-center">
+              <div class="custom-color-picker" data-color-target="grupo_1" {% if grupo %}data-color-picker="{{grupo.bg_color}}"{% endif %}></div>
+              <span class="mx-2" data-color-target-text="grupo_1">{% if grupo %}{{grupo.bg_color}}{% else %}Sin color asignado{% endif %}</span>
+              <input type="hidden" data-color-target-input="grupo_1" name="bg_color" {% if grupo %}value="{{grupo.bg_color}}"{% endif %}>
+            </div>
+          </div>
+          <!-- Icono -->
+          <div class="col-6">
+            <h6 class="text-muted mb-1">Icono:</h6>
+            <div class="form-control d-flex align-items-center custom-modal text-center" data-icono-target="grupo_1" data-urls="{% url 'utils:modal-iconos' %}" data-search="true">
+              <i class="menu-icon tf-icons {% if grupo %}{{grupo.icono}}{% else %}ri-add-circle-line{% endif %} ri-22x text-primary" data-icono-target-preview="grupo_1"></i>
+              <span class="mx-2" data-icono-target-text="grupo_1">{% if grupo %}{{grupo.icono}}{% else %}Sin icono asignado{% endif %}</span>
+              <input type="hidden" data-icono-target-input="grupo_1" name="icono" {% if grupo %}value="{{grupo.icono}}"{% endif %}>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="card p-sm-12 p-6">
+      <h5>Permisos Roles</h5>
+      <!-- Tabla Modelos -->
+      <div class="card-body rounded p-6 pt-2 px-2 text-heading">
+        <div class="mb-4">
+          <input type="text" class="form-control custom-searcher" placeholder="Buscar permisos...">
+        </div>
+        <div class="table-responsive perfect-scrollbar overflow-hidden" style="max-height: 600px;">
+          <table class="table table-flush-spacing ">
+            <tbody>
+              <tr>
+                <td class="text-nowrap fw-medium">
+                  Permisos Administrador 
+                  <i class="ri-information-line" data-bs-toggle="tooltip" data-bs-placement="top" title="Dar acceso completo al sistema"></i>
+                </td>
+                <td>
+                  <div class="d-flex justify-content-end">
+                    <div class="form-check mb-0">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label" for="selectAll">Seleccionar Todo</label>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              {% for modelo in modelos %}
+              <tr>
+                <td class="text-nowrap fw-medium">
+                  <div class="form-check">
+                    <!-- Analizar para modificarlo y hacerlo mejor con mis conocimientos de JS y con chatgipiti -->
+                    <input class="form-check-input model-selector" type="checkbox" name="{{modelo.id}}" >
+                    <label class="form-check-label" for="{{modelo.id}}"  data-searcher-item>{{ modelo.modelo }}</label>
+                  </div>
+                </td>
+                <td class="text-end pe-6">
+                  <div class="d-flex flex-column float-end">
+                    {% for permiso in modelo.permisos %}
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="permisos" value="{{ permiso.id }}" {% if permiso.id in select_perm %}checked{% endif %}>
+                        <label class="form-check-label" for="{{ permiso.id }}">{{ permiso.nombre }}</label>
+                      </div>
+                    {% endfor %}
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 text-center mt-12 pb-4">
+    <button type="submit" class="btn btn-primary me-3">Submit</button>
+    <a href="" class="btn btn-outline-secondary">Cancel</a>
+  </div>
+
+</form>
+
+{% endblock %}

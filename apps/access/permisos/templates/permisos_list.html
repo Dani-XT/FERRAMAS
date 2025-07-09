@@ -1,0 +1,108 @@
+{% extends layout_path %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}Permisos - Apps{% endblock %}
+
+{% block vendor_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'vendor/libs/datatables-bs5/datatables.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/@form-validation/form-validation.css' %}" />
+{% endblock vendor_css %}
+
+{% block vendor_js %}
+{{ block.super }}
+<script src="{% static 'vendor/libs/datatables-bs5/datatables-bootstrap5.js' %}"></script>
+<script src="{% static 'vendor/libs/@form-validation/popular.js' %}"></script>
+<script src="{% static 'vendor/libs/@form-validation/bootstrap5.js' %}"></script>
+<script src="{% static 'vendor/libs/@form-validation/auto-focus.js' %}"></script>
+{% endblock vendor_js %}
+
+{% block page_js %}
+{{ block.super }}
+<script src="{% static 'js/new/app-access-permisos.js' %}"></script>
+{% endblock page_js %}
+
+{% block content %}
+<!-- Permission Table -->
+
+{% if messages %}
+  {% for message in messages %}
+  <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% else %}alert-warning{% endif %}" role="alert">
+    {{ message }}
+  </div>
+  {% endfor %}
+{% endif %}
+
+<div class="col-12">
+  <h4 class="mt-6 mb-1">Modelos del Sistema</h4>
+  <p class="mb-0">Listado de modelos registrados que representan las tablas del sistema y permiten asignar permisos como ver, crear, editar o eliminar.</p>
+</div>
+
+<div class="card mt-5">
+  <div class="card-datatable table-responsive">
+    <table class="datatables-modelos table" data-datatables-urls="">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Nombre</th>
+          <th>Asignados a</th>
+          <th>Fecha de Creacion</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for modelo in modelos %}
+        <tr>
+          <td></td>
+          <!-- Nombre del modelo -->
+          <td>
+            <div class="d-flex flex-column">
+              <code>{{ modelo.app }}</code>
+              <a href="{% url 'modelos-detail' modelo.id %}"><span class="text-heading text-truncate fw-medium text-capitalize">{{ modelo.modelo }}</span></a>
+            </div>
+          </td>
+          <!-- Grupos asociados a este modelo -->
+          <td>
+            {% if modelo.grupos %}
+              {% for grupo in modelo.grupos %}
+              <a href="">
+                <span class="badge rounded-pill bg-label-primary me-4">{{ grupo.name }}</span>
+              </a>
+              {% endfor %}
+            {% else %}
+              <span class="text-muted">Ninguno</span>
+            {% endif %}
+          </td>
+          <!-- Fecha de creacion -->
+          <td>
+            <span class="text-nowrap">{{ modelo.fecha|date:"d/m/Y H:i" }}</span>
+          </td>
+          <!-- Acciones -->
+          <td>
+            <div class="d-flex align-items-center">
+              <a href="" class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect waves-light">
+                <i class="ri-edit-box-line ri-22px"></i>
+              </a>
+              <a href="" class="alert-danger btn-sm btn-icon btn-text-secondary rounded-pill ">
+                <i class="ri-delete-bin-7-line ri-22px"></i>
+              </a>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--/ Permission Table -->
+
+<span class="text-nowrap"><a href="#"><span class="badge rounded-pill bg-label-primary me-4">Administrador</span></a></span>
+<span class="text-nowrap"><a href="#"><span class="badge rounded-pill bg-label-warning me-4">Manager</span></a></span>
+<span class="text-nowrap"><a href="#"><span class="badge rounded-pill bg-label-success me-4">Users</span></a></span>
+<span class="text-nowrap"><a href="#"><span class="badge rounded-pill bg-label-info me-4">Support</span></a></span>
+<span class="text-nowrap"><a href="#"><span class="badge rounded-pill bg-label-danger me-4">Restricted User</span></a></span>
+{% endblock %}

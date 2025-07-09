@@ -1,0 +1,155 @@
+{% extends layout_path %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}Permisos - Detalle{% endblock %}
+
+{% block vendor_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'vendor/libs/datatables-bs5/datatables.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/@form-validation/form-validation.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/perfect-scrollbar/perfect-scrollbar.css' %}" />
+{% endblock vendor_css %}
+
+{% block vendor_js %}
+{{ block.super }}
+<script src="{% static 'vendor/libs/datatables-bs5/datatables-bootstrap5.js' %}"></script>
+<script src="{% static 'vendor/libs/@form-validation/popular.js' %}"></script>
+<script src="{% static 'vendor/libs/@form-validation/bootstrap5.js' %}"></script>
+<script src="{% static 'vendor/libs/@form-validation/auto-focus.js' %}"></script>
+<script src="{% static 'vendor/libs/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+{% endblock vendor_js %}
+
+{% block page_js %}
+{{ block.super }}
+<script src="{% static 'js/new/app-access-permisos.js' %}"></script>
+{% endblock page_js %}
+
+
+{% block content %}
+<!-- Basic Bootstrap Table -->
+
+<div class="card p-6">
+  <div class="card-header pb-1 text-center"><h2 class="card-title">{{id_content.model}}</h2></div>
+  <div class="card-body">
+    <div class="row mb-1">
+      <div class="col-md-3 pt-3">
+        <h6 class="mb-1">Aplicacion</h6>
+        <p class="mb-0"><code>{{ id_content.app_label }}</code></p>
+      </div>
+
+      <div class="col-md-3 pt-3">
+        <h6 class="text-muted mb-1">Fecha de creacion</h6>
+        <p class="mb-0">{{ id_content.date_created|date:"d/m/Y H:i" }}</p>
+      </div>
+
+      <div class="col-md-3 pt-3">
+        <h6 class="text-muted mb-1">Icono:</h6>
+      
+        {% if id_content.icon %}
+          <div class="d-flex align-items-center">
+            <i class="{{id_content.icon}} menu-icon tf-icons ri-22px text-primary me-2"></i>
+            <span>{{id_content.icon}}</span>
+          </div>
+        {% else %}
+          <div class="d-flex align-items-center">
+            <i class="ri-add-circle-line menu-icon tf-icons ri-22px text-primary me-2"></i>
+            <span>Sin icono asignado</span>
+          </div>
+        {% endif %}
+
+      </div>
+      <div class="col-md-3 pt-3">
+        <h6 class="text-muted mb-1">Color:</h6>
+        {% if id_content.bg_color %}
+          <div class="d-flex align-items-center">
+            <span class="me-2 bg-secondary border border-secondary shadow-sm p-0" style="width: .8rem; height: .8rem;"></span>
+            <span>{{id_content.bg_color}}</span>
+          </div>
+        {% else %}
+          <div class="d-flex align-items-center">
+            <span class="me-2 bg-secondary border border-secondary shadow-sm p-0" style="width: .8rem; height: .8rem;"></span>
+            <span>Sin color asignado</span>
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+
+    <div class="col-md-12 pt-3 mt-6">
+      <div class="alert alert-secondary">
+        <strong>Descripción:</strong>
+        <p class="mb-0">{{ id_content.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card p-6 mt-3">
+    <div class="card-datatable table-responsive">
+      <table class="datatables-permisos table">
+        <thead>
+          <tr>
+            <th></th>  <!-- PARA RESPONSIVO -->
+            <th>Permiso</th>
+            <th>Descripcion</th>
+            <th>Grupos asociados</th>
+            <th>Fechas</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+          {% for permiso in id_permiso %}
+          <tr>
+            <td></td>
+            <td>
+              <a href="{% url 'utils:modal-permiso' permiso.id %}" class="btn btn-text-primary waves-effect waves-light custom-modal" style="text-transform: none;">
+                <code style="color:var(--bs-code-color);">{{ permiso.codename }}</code>
+              </a>
+            </td>
+            <td>{{ permiso.descripcion }}</td>
+            <td>
+              {% if permiso.grupos %}
+                {% for grupo in permiso.grupos %}
+                <a href="">
+                  <span class="badge rounded-pill bg-label-primary me-4">{{ grupo.name }}</span>
+                </a>
+                {% endfor %}
+              {% else %}
+                <span class="text-muted">Ninguno</span>
+              {% endif %}
+            </td>
+            <td>{{ permiso.date_created|date:"d/m/Y H:i" }}</td>
+
+            <td>
+              <div class="d-flex align-items-center">
+                
+                <span class="text-nowrap">
+                  <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect waves-light custom-modal" data-urls="{% url 'utils:modal-permiso' permiso.id %}">
+                    <i class="ri-edit-box-line ri-22px"></i>
+                  </button>
+                </span>
+
+                <a href="" class="alert-danger btn-sm btn-icon btn-text-secondary rounded-pill ">
+                  <i class="ri-delete-bin-7-line ri-22px"></i>
+                </a>
+
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+    </div>
+</div>
+
+
+<div id="modalDynamicContainer"></div>
+
+
+<!--/ Basic Bootstrap Table -->
+{% endblock %}

@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 # from apps.productos.producto.models import Producto
-from apps.front.home.models import Producto
+# from front.home.models import Producto
 from .serializer import ProductoSerializer
 
 class ProductoApiView(viewsets.ModelViewSet):

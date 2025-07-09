@@ -41,20 +41,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    'apps.front.home',
-    'apps.front.ecommerce',
-
-    'apps.admin_home',
-    'apps.productos.producto',
+    # ----------------------------------------
+    # FRONT
+    # ----------------------------------------
+    'front.carrito',
+    'front.ecommerce',
+    'front.home.apps.HomeConfig',
+    # ----------------------------------------
+    # ADMIN
+    # ----------------------------------------
+    'apps.home',
+    'apps.productos',
     'apps.access.roles',
+    'apps.access.permisos',
     'apps.usuarios',
-
-    'common',
-    'crud',
-
-
-
+    # ----------------------------------------
+    # AUTH Y SISTEMA
+    # ----------------------------------------
+    'apps.utils',
     'auth.apps.AuthConfig',
 ]
 

@@ -1,0 +1,471 @@
+{% extends layout_path %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}Precio - Planes{% endblock %}
+
+{% block page_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'vendor/libs/datatables-bs5/datatables.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/libs/select2/select2.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/css/pages/page-pricing.css' %}" />
+{% endblock page_css %}
+
+{% block vendor_js %}
+{{ block.super }}
+<script src="{% static 'vendor/libs/datatables-bs5/datatables-bootstrap5.js' %}"></script>
+<script src="{% static 'vendor/libs/select2/select2.js' %}"></script>
+<script src="{% static 'vendor/libs/autosize/autosize.js' %}"></script>
+{% endblock vendor_js %}
+
+{% block page_js %}
+{{ block.super }}
+<script src="{% static 'js/new/app-system-home.js' %}"></script>
+{% endblock page_js %}
+
+{% block content %}
+
+<div class="card mb-10">
+  <div class="pb-sm-12 pb-2 rounded-top">
+    <div class="container py-12">
+      <div class="row ">
+        <h3 class="text-center mb-2 mt-0 mt-md-2">Precios de los Planes</h3>
+        <p class="text-center mb-2">En esta pagina podras gestionar los diferentes Planes que tendra tu Pagina Web.</p>
+        <div class="d-flex align-items-center justify-content-center flex-wrap gap-2 pt-5 mb-6">
+          <label class="switch switch-sm ms-sm-5 ps-sm-5 me-0">
+            <span class="switch-label fw-medium text-body">Monthly</span>
+            <input type="checkbox" class="switch-input price-duration-toggler" checked />
+            <span class="switch-toggle-slider">
+              <span class="switch-on"></span>
+              <span class="switch-off"></span>
+            </span>
+            <span class="switch-label fw-medium text-body">Annual</span>
+          </label>
+          <div class="mt-n5 ms-n5 ml-2 mb-10 d-none d-sm-flex align-items-center gap-1">
+            <i class="ri-corner-left-down-fill ri-24px text-muted scaleX-n1-rtl"></i>
+            <span class="badge badge-sm bg-label-primary rounded-pill mb-2 ">Save up to 10%</span>
+          </div>
+        </div>
+
+        {% if planes %}
+        {% for plan in planes %}
+        <div class="col-md-5 col-lg-4 col-ms-6 mb-6 ">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title text-center text-capitalize mb-1 pt-4">{{plan.nombre}}</h4>
+              <p class="text-center mb-5">{{plan.descripcion}}</p>
+              <div class="text-center">
+                <div class="d-flex justify-content-center">
+                  <sup class="h6 pricing-currency mt-2 mb-0 me-1 text-body">$</sup>
+                  <h1 class="mb-0 text-primary">{{plan.valor_final}}</h1>
+                  <sub class="h6 text-body pricing-duration mt-auto mb-1 ms-1">/month</sub>
+                </div>
+              </div>
+              <ul class="list-unstyled my-6">
+                <li class="mb-2"><span class="text-truncate me-1"> Caracteristica 1</span></li>
+                <li class="mb-2"><span class="text-truncate me-1">Caracteristica 2</span></li>
+                <li class="mb-2"><span class="text-truncate me-1">Caracteristica 3</span></li>
+              </ul>
+              <p class="mb-0 fw-medium mt-6 d-flex justify-content-between">
+                <a href="{% url 'planes-detail' plan.id %}" class="d-flex align-items-center">
+                  <span class="me-2">Detalles del Plan</span>
+                  <i class="tf-icons ri-arrow-right-line scaleX-n1-rtl"></i>
+                </a>
+                <a href="{% url 'planes-delete' plan.id %}" class="alert-danger btn-sm btn-icon btn-text-secondary rounded-pill ">
+                  <i class="ri-delete-bin-7-line ri-22px"></i>
+                </a>
+              </p>
+              <a href="{% url 'planes-update' plan.id %}" class="text-danger"><small>Editar Plan</small></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="col-md-5 col-lg-4 col-ms-6 mb-6 ">
+          <div class="card h-100">
+            <div class="card-body">
+              <h4 class="card-title text-center text-capitalize mb-1 pt-4">¿Nuevo Plan?</h4>
+              <p class="text-center mb-5">Crea un nuevo plan, si no Existe</p>
+              <div class="d-flex justify-content-center">
+                <a href="{% url 'planes-add' %}" class="btn btn-sm btn-primary mb-4 text-nowrap text-white waves-effect waves-light">Crear Plan</a>
+              </div>
+              <div class="d-flex align-items-end justify-content-between mt-auto pt-2">
+                <img src="{% static 'img/illustrations/tree-3.png' %}" alt="auth-tree">
+                <img src="{% static 'img/illustrations/illustration-3.png' %}" class="img-fluid" alt="Image" width="80">
+              </div>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row gy-6">
+  
+  <!-- Condicion Habitacional -->
+  <div class="col-xl-6 col-md-6">
+    <div class="card">
+      <h6 class="card-header">Condicion Habitacional</h6>
+      <div class="card-datatable table-responsive">
+        <table class="datatables-condicion-habitacional table table-sm">
+          <thead>
+            <tr>
+              <th class="text-truncate">Nombre</th>
+              <th class="text-truncate">Descripcion</th>
+              <th class="text-truncate">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- columna -->
+            <tr>
+              <td class="text-truncate">arrendatario</td>
+              <td class="text-truncate">Arrendatario</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="text-nowrap">
+                    <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect waves-light btn-detalle-permiso" data-urls="/admin/permisos/update/1/">
+                      <i class="ri-edit-box-line ri-22px"></i>
+                    </button>
+                  </span>
+                  <a href="#" class="alert-danger btn-sm btn-icon btn-text-secondary rounded-pill ">
+                    <i class="ri-delete-bin-7-line ri-22px"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <!-- columna -->
+            <tr>
+              <td class="text-truncate">Allegado</td>
+              <td class="text-truncate">Allegado</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="text-nowrap">
+                    <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect waves-light btn-detalle-permiso" data-urls="/admin/permisos/update/1/">
+                      <i class="ri-edit-box-line ri-22px"></i>
+                    </button>
+                  </span>
+                  <a href="#" class="alert-danger btn-sm btn-icon btn-text-secondary rounded-pill ">
+                    <i class="ri-delete-bin-7-line ri-22px"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <!-- columna -->
+            <tr>
+              <td class="text-truncate">Propietario</td>
+              <td class="text-truncate">Propietario</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="text-nowrap">
+                    <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect waves-light btn-detalle-permiso" data-urls="/admin/permisos/update/1/">
+                      <i class="ri-edit-box-line ri-22px"></i>
+                    </button>
+                  </span>
+                  <a href="#" class="alert-danger btn-sm btn-icon btn-text-secondary rounded-pill ">
+                    <i class="ri-delete-bin-7-line ri-22px"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <!-- columna -->
+            <tr>
+              <td class="text-truncate">Otro</td>
+              <td class="text-truncate">Otro</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="text-nowrap">
+                    <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect waves-light btn-detalle-permiso" data-urls="/admin/permisos/update/1/">
+                      <i class="ri-edit-box-line ri-22px"></i>
+                    </button>
+                  </span>
+                  <a href="#" class="alert-danger btn-sm btn-icon btn-text-secondary rounded-pill ">
+                    <i class="ri-delete-bin-7-line ri-22px"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- /Condicion Habitacional -->
+   <!-- Situacion Previsional -->
+  <div class="col-xl-6 col-md-6">
+    <div class="card">
+      <h6 class="card-header">Situacion Previsional</h6>
+      <div class="card-datatable table-responsive">
+        <table class="datatables-situacion-previsional table table-sm">
+          <thead>
+            <tr>
+              <th class="text-truncate">Nombre</th>
+              <th class="text-truncate">Descripcion</th>
+              <th class="text-truncate">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- columna -->
+            <tr>
+              <td class="text-truncate">AFP</td>
+              <td class="text-truncate">Cotiza en AFP</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="text-nowrap">
+                    <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect waves-light btn-detalle-permiso" data-urls="/admin/permisos/update/1/">
+                      <i class="ri-edit-box-line ri-22px"></i>
+                    </button>
+                  </span>
+                  <a href="#" class="alert-danger btn-sm btn-icon btn-text-secondary rounded-pill ">
+                    <i class="ri-delete-bin-7-line ri-22px"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <!-- columna -->
+            <tr>
+              <td class="text-truncate">Independiente</td>
+              <td class="text-truncate">Independiente</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="text-nowrap">
+                    <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect waves-light btn-detalle-permiso" data-urls="/admin/permisos/update/1/">
+                      <i class="ri-edit-box-line ri-22px"></i>
+                    </button>
+                  </span>
+                  <a href="#" class="alert-danger btn-sm btn-icon btn-text-secondary rounded-pill ">
+                    <i class="ri-delete-bin-7-line ri-22px"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <!-- columna -->
+            <tr>
+              <td class="text-truncate">Informal</td>
+              <td class="text-truncate">Trabajo Informal</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="text-nowrap">
+                    <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect waves-light btn-detalle-permiso" data-urls="/admin/permisos/update/1/">
+                      <i class="ri-edit-box-line ri-22px"></i>
+                    </button>
+                  </span>
+                  <a href="#" class="alert-danger btn-sm btn-icon btn-text-secondary rounded-pill ">
+                    <i class="ri-delete-bin-7-line ri-22px"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <!-- columna -->
+            <tr>
+              <td class="text-truncate">Cesante</td>
+              <td class="text-truncate">Cesante</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="text-nowrap">
+                    <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect waves-light btn-detalle-permiso" data-urls="/admin/permisos/update/1/">
+                      <i class="ri-edit-box-line ri-22px"></i>
+                    </button>
+                  </span>
+                  <a href="#" class="alert-danger btn-sm btn-icon btn-text-secondary rounded-pill ">
+                    <i class="ri-delete-bin-7-line ri-22px"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- /Situacion Previsional -->
+   <!-- Comunas -->
+   <div class="col-xl-6 col-md-6">
+    <div class="card">
+      <h6 class="card-header">Comunas</h6>
+      <div class="card-datatable table-responsive">
+        <table class="datatables-comunas table table-sm">
+          <thead>
+            <tr>
+              <th class="text-truncate">Nombre</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for c in comunas %}
+            <tr>
+              <td class="text-truncate">{{c.nombre}}</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="text-nowrap">
+                    <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect waves-light btn-detalle-permiso" data-urls="/admin/permisos/update/1/">
+                      <i class="ri-edit-box-line ri-22px"></i>
+                    </button>
+                  </span>
+                  <a href="#" class="alert-danger btn-sm btn-icon btn-text-secondary rounded-pill ">
+                    <i class="ri-delete-bin-7-line ri-22px"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- /Comunas -->
+   <!-- Provincias -->
+   <div class="col-xl-6 col-md-6">
+    <div class="card">
+      <h6 class="card-header">Provincias</h6>
+      <div class="card-datatable table-responsive">
+        <table class="datatables-provincias table table-sm">
+          <thead>
+            <tr>
+              <th class="text-truncate">Nombre</th>
+              <th class="text-truncate">Nombre Completo</th>
+              <th class="text-truncate">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in provincias %}
+            <tr>
+              <td class="text-truncate">{{p.nombre}}</td>
+              <td class="text-truncate">{{p.nombre_completo}}</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="text-nowrap">
+                    <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect waves-light btn-detalle-permiso" data-urls="/admin/permisos/update/1/">
+                      <i class="ri-edit-box-line ri-22px"></i>
+                    </button>
+                  </span>
+                  <a href="#" class="alert-danger btn-sm btn-icon btn-text-secondary rounded-pill ">
+                    <i class="ri-delete-bin-7-line ri-22px"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- /Provincias -->
+  <!-- Regiones -->
+   <div class="col-xl-6 col-md-6">
+    <div class="card">
+      <h6 class="card-header">Regiones</h6>
+      <div class="card-datatable table-responsive">
+        <table class="datatables-regiones table table-sm">
+          <thead>
+            <tr>
+              <th class="text-truncate">Numero</th>
+              <th class="text-truncate">Nombre</th>
+              <th class="text-truncate">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for r in regiones %}
+            <tr>
+              <td class="text-truncate">{{r.numero}}</td>
+              <td class="text-truncate">{{r.nombre}}</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="text-nowrap">
+                    <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect waves-light btn-detalle-permiso" data-urls="/admin/permisos/update/1/">
+                      <i class="ri-edit-box-line ri-22px"></i>
+                    </button>
+                  </span>
+                  <a href="#" class="alert-danger btn-sm btn-icon btn-text-secondary rounded-pill ">
+                    <i class="ri-delete-bin-7-line ri-22px"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- /Regiones -->
+
+</div>
+
+  <h4 class="mt-6 mb-1" id="FrecuenciaFacturacionSection">Frecuencia de Facturacion</h4>
+  <p class="mb-1">Define los distintos periodos en los que se puede facturar un plan. Puedes crear modalidades como mensual, anual o permanentes para ajustar la suscripción según tus necesidades.</p>
+
+  <div class="row mt-1 g-6 mb-6" >
+
+    {% if modalidades %}
+    {% for m in modalidades %}
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div class="me-1">
+              <p class="text-heading mb-1">{{ m.nombre }}</p>
+              <small>{{ m.descripcion }}</small>
+              <div class="d-flex align-items-center">
+                {% if m.descuento != 0 %}
+                <h4 class="mb-1 me-2 text-danger">-{{ m.descuento }}%</h4>
+                {% else %}
+                <h4 class="mb-1 me-2">{{ m.descuento }}%</h4>
+                {% endif %}
+                <span class="badge rounded-pill bg-label-danger">dcto</span>
+                
+              </div>
+              <small class="mb-0">{{ m.duracion }}  {{ m.unidad_duracion }}</small>
+              <p class="text-heading mb-1">
+                <a class="custom-modal text-primary" href="">Editar</a>
+              </p>
+            </div>
+            <div class="d-flex align-items-end">
+              <a href="{% url 'tipo-plan-delete' m.id %}" class="d-inline-flex p-2 align-items-center rounded-circle alert-danger">
+                <i class="ri-delete-bin-7-line ri-22px"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="col-sm-6">
+      <div class="card h-100 justify-content-center">
+        <div class="row">
+          <div class="col-7">
+            <div class="card-body text-sm-start text-center">
+              <a data-urls="" class="btn btn-sm btn-primary mb-4 text-nowrap custom-modal text-white">Crear Frecuencia</a>
+              <p class="mb-0">Crea una nueva frecuencia de facturación si aún no existe.</p>
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="d-flex align-items-end h-100 justify-content-center">
+              <img src="{% static 'img/illustrations/illustration-3.png' %}" class="img-fluid" alt="Image" width="80">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% if messages %}
+  {% for message in messages %}
+  <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% else %}alert-warning{% endif %}" role="alert">
+    {{ message }}
+  </div>
+  {% endfor %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends layout_path %}
+
+{% block content %}
+{% if id_content.icon %}
+          <button 
+          class="btn btn-sm  btn-text-secondary btn-outline-secondary waves-effect waves-light custom-modal" 
+          data-urls="{% url 'modal-iconos' %}"
+          data-search="true"
+          >
+            <i id="iconoSeleccionadoPreviewIcon" class="menu-icon tf-icons {{id_content.icon}} ri-2x"></i>
+            <span id="iconoSeleccionadoPreview">{{id_content.icon}}</span>
+            
+          </button>
+        {% else %}
+          <button 
+            class="btn btn-sm  btn-text-secondary btn-outline-secondary waves-effect waves-light custom-modal" 
+            data-urls="{% url 'modal-iconos' %}"
+            data-search="true"
+          >
+            <i id="iconoSeleccionadoPreviewIcon" class="menu-icon tf-icons ri-add-circle-line ri-2x"></i>
+            <span id="iconoSeleccionadoPreview">Sin icono asignado</span>
+            
+          </button>
+            
+{% endif %}
+
+{% endblock content %}

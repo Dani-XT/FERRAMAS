@@ -22,6 +22,7 @@ node_modules/
 .Python
 build/
 env/
+media/
 develop-eggs/
 dist/
 downloads/

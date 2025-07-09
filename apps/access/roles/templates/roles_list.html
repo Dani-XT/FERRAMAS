@@ -23,37 +23,24 @@
 
 {% block page_js %}
 {{ block.super }}
-<script src="{% static 'js/app-roles-list.js' %}"></script>
+<script src="{% static 'js/new/app-roles-list.js' %}"></script>
 {% endblock page_js %}
 
 {% block content %}
-<!-- Roles Toast -->
-{% if messages %}
-<div class="toast-container end-0 m-1 me-4">
-  {% for message in messages %}
-  <div class="toast {% if message.tags == 'success' %}bg-success{% elif message.tags == 'error' %}bg-danger{% else %}bg-warning{% endif %}" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true" data-bs-delay="2000">
-    <div class="toast-body text-center text-white">
-      {{ message }}
-    </div>
-  </div>
-  {% endfor %}
-</div>
-{% endif %}
-<!--/ Roles Toast -->
 
-<h4 class="mb-1">Lista de Roles</h4>
-<p class="mb-6">Un rol proporciona acceso a menús y funciones predefinidos para que, dependiendo del rol asignado, un administrador pueda tener acceso a lo que el usuario necesita.</p>
+
+<h4 class="mb-1">Lista de Grupos de Roles</h4>
+<p class="mb-6">Los Grupos de Roles nos proporciona acceso a menús y funciones predefinidos para que, dependiendo del rol asignado, un administrador pueda tener acceso a lo que el usuario necesita.</p>
 <!-- Role cards -->
 <div class="row g-6">
   
   {% if grupos %}
   {% for grupo in grupos %}
-  
     <div class="col-xl-4 col-lg-6 col-md-6">
       <div class="card">
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center mb-4">
-            <p class="mb-0">Total {{ grupo.total }} users</p>
+            <p class="mb-0">Total {{ grupo.total }} usuarios</p>
             <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
             {% if grupo.usuarios %}
             
@@ -80,15 +67,17 @@
             {% endif %}
             </ul>
           </div>
-          
           <div class="d-flex justify-content-between align-items-center">
             <div class="role-heading">
-              <a href="{% url 'roles-update' grupo.id %}">
-                <h5 class="mb-1">{{grupo.name}}</h5>
-                <p class="mb-0">Edit Role</p>
+              <a href="{% url 'grupos-detail' grupo.id %}">
+                <h5 class="mb-1">{{grupo.nombre}}</h5>
               </a>
+              <a href="{% url 'grupos-update' grupo.id %}">
+                <p class="mb-0">Editar Rol</p>
+              </a>
+              
             </div>
-            <a href="{% url 'roles-delete' grupo.id %}" class="d-inline-flex p-2 align-items-center rounded-circle alert-danger">
+            <a href="{% url 'grupos-delete' grupo.id %}" class="d-inline-flex p-2 align-items-center rounded-circle alert-danger">
               <i class="ri-delete-bin-7-line ri-22px"></i>
             </a>
           </div>
@@ -98,7 +87,7 @@
   {% endfor %}
   {% endif %}
 
-  <div class="col-xl-4 col-lg-6 col-md-6">
+  <div class="col-xl-4 col-lg-6 col-md-6 ">
     <div class="card h-100">
       <div class="row h-100">
         <div class="col-5">
@@ -108,13 +97,21 @@
         </div>
         <div class="col-7">
           <div class="card-body text-sm-end text-center ps-sm-0">
-            <a href="{% url 'roles-add' %}" class="btn btn-sm btn-primary mb-4 text-nowrap add-new-role">Crear nuevo rol</a>
+            <a href="{% url 'grupos-add' %}" class="btn btn-sm btn-primary mb-4 text-nowrap">Crear nuevo rol</a>
             <p class="mb-0">Crear nuevo rol, si no existe</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+  {% if messages %}
+    {% for message in messages %}
+    <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% else %}alert-warning{% endif %}" role="alert">
+      {{ message }}
+    </div>
+    {% endfor %}
+  {% endif %}
 </div>
+
 <!--/ Role cards -->
 {% endblock %}
