@@ -35,7 +35,7 @@
 <h4 class="mb-1">Agregar Tecnicos</h4>
 <p class="mb-6">Formulario para la creacion de los nuevos Tecnicos en el sistema.</p>
 
-<form id="updateUsuarioForm" action="{% url 'usuarios-update' id_usuario.id %}" method="post" >
+<form id="addUsuarioForm" action="{% url 'usuarios-add' %}" method="post" >
   {% csrf_token %}
   <div class="row">
     <!-- Imagen -->
@@ -67,7 +67,7 @@
               <div class="input-group input-group-merge">
                 <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ri-user-line ri-20px"></i></span>
                 <div class="form-floating form-floating-outline">
-                  <input class="form-control" type="text" id="nombre" name="nombre" value="{{id_usuario.first_name}}" autofocus>
+                  <input class="form-control" type="text" id="nombre" name="nombre" autofocus>
                   <label for="nombre">Nombre </label>
                 </div>
               </div>
@@ -77,7 +77,7 @@
               <div class="input-group input-group-merge">
                 <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ri-user-line ri-20px"></i></span>
                 <div class="form-floating form-floating-outline">
-                  <input class="form-control" type="text" id="apellido" name="apellido" value="{{id_usuario.last_name}}" autofocus>
+                  <input class="form-control" type="text" id="apellido" name="apellido" autofocus>
                   <label for="apellido">Apellido </label>
                 </div>
               </div>
@@ -87,18 +87,8 @@
               <div class="input-group input-group-merge">
                 <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ri-mail-line ri-20px"></i></span>
                 <div class="form-floating form-floating-outline">
-                  <input class="form-control" type="mail" id="email" name="email" value="{{ id_usuario.email }}" autofocus>
+                  <input class="form-control" type="mail" id="email" name="email" autofocus>
                   <label for="email">E-mail </label>
-                </div>
-              </div>
-            </div>
-            <!-- Username -->
-            <div class="col-md-6">
-              <div class="input-group input-group-merge">
-                <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ri-user-line ri-20px"></i></span>
-                <div class="form-floating form-floating-outline">
-                  <input class="form-control" type="text" id="username" name="username" value="{{id_usuario.username}}" autofocus>
-                  <label for="username">Username </label>
                 </div>
               </div>
             </div>
@@ -108,9 +98,7 @@
                 <select id="selectRol" class="select2 form-select form-select-lg" data-allow-clear="true" name="grupo">
                   <option value="" disabled selected>Seleccione un rol</option>
                   {% for grupo in grupos %}
-                    <option value="{{ grupo.id }}" {% if grupo.id == grupo_usuario.id %}selected{% endif %}>
-                      {{ grupo.name }}
-                    </option>
+                    <option value="{{ grupo.id }}">{{ grupo.name }}</option>
                   {% endfor %}
                 </select>
                 <label for="selectRol">Rol</label>
@@ -122,8 +110,8 @@
       
 
       <div class="mt-6 d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary me-3">Modificar</button>
-        <a href="{% url 'usuarios-list' %}" class="btn btn-outline-secondary">Descartar</a>
+        <button type="submit" class="btn btn-primary me-3">Crear</button>
+        <button type="reset" class="btn btn-outline-secondary">Descartar</button>
       </div>
       {% if messages %}
         {% for message in messages %}

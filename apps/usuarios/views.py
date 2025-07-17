@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 # Contrib
 from apps.usuarios.helpers import get_all_usuarios
 
-class UsuariosListView(PermissionRequiredMixin, TemplateView):
+class UsuariosView(PermissionRequiredMixin, TemplateView):
     permission_required = ("auth.view_user")
 
     def get_context_data(self, **kwargs):
