@@ -12,7 +12,7 @@ urlpatterns = [
         name="ecommerce-list",
     ),
     path(
-        "ecommerce/product/<int:pk>/",
+        "ecommerce/product/detail/<int:pk>/",
         EcommerceDetailView.as_view(template_name="ecommerce_detail.html"),
         name="ecommerce-detail",
     )

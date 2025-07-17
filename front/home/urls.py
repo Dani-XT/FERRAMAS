@@ -7,7 +7,6 @@ from front.home.views import HomeView
 
 
 urlpatterns = [
-    path("", lambda request: redirect('home')),
     path(
         "home/",
         HomeView.as_view(template_name="home.html"),

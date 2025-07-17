@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from web_project.template_helpers.theme import TemplateHelper
 
 # Modelos
-# from front.home.models import Producto
+from apps.productos.models import Producto
 
 class EcommerceListView(TemplateView):
 
@@ -24,8 +24,8 @@ class EcommerceListView(TemplateView):
         return context
     
     def get_all_productos(self):
-        pass
-        # return Producto.objects.all().order_by('id_producto')
+        
+        return Producto.objects.all().order_by('id')
     
    
 

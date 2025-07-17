@@ -1,9 +1,8 @@
 from django.shortcuts import redirect
 from django.contrib.auth.models import User, Group
 from django.contrib import messages
-from django.conf import settings
 from auth.views import AuthView
-from auth.helpers import send_verification_email
+from django.contrib.auth import authenticate, login
 
 import uuid
 
@@ -39,25 +38,10 @@ class RegisterView(AuthView):
         created_user.save()
 
         # Add the user to the 'client' group (or any other group you want to use as default for new users)
-        user_group, created = Group.objects.get_or_create(name="client")
+        user_group, created = Group.objects.get_or_create(name="Cliente")
         created_user.groups.add(user_group)
+        login(request, created_user)
 
-        # Generate a token and send a verification email here
-        token = str(uuid.uuid4())
-
-        # Set the token in the user's profile
-        # user_profile, created = Profile.objects.get_or_create(user=created_user)
-        # user_profile.email_token = token
-        # user_profile.email = email
-        # user_profile.save()
-
-        send_verification_email(email, token)
-
-        if settings.EMAIL_HOST_USER and settings.EMAIL_HOST_PASSWORD:
-            messages.success(request, "Verification email sent successfully")
-        else:
-            messages.error(request, "Email settings are not configured. Unable to send verification email.")
-
-        request.session['email'] = email ## Save email in session
+        
         # Redirect to the verification page after successful registration
-        return redirect("verify-email-page")
+        return redirect("front:home")
