@@ -14,7 +14,9 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from .template import TEMPLATE_CONFIG, THEME_LAYOUT_DIR, THEME_VARIABLES
+from .template import THEME_LAYOUT_DIR, TEMPLATE_CONFIG, THEME_VARIABLES
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,14 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^y95ezw!2d7(nouzcd$*2o1h@a%nl*%!vpy=$&2cs2a+*p#68s'
+SECRET_KEY = os.environ.get("SECRET_KEY", default="")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", 'True').lower() in ['true', 'yes', '1']
 
 ALLOWED_HOSTS = []
 
-
+ENVIRONMENT = os.environ.get("DJANGO_ENVIRONMENT", default="local")
 # Application definition
 
 INSTALLED_APPS = [
@@ -159,6 +161,9 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Default URL on which Django application runs for specific environment
+BASE_URL = os.environ.get("BASE_URL", default="http://127.0.0.1:8000")
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -173,19 +178,18 @@ TEMPLATE_CONFIG = TEMPLATE_CONFIG
 THEME_VARIABLES = THEME_VARIABLES
 
 # Email Settings
-# ------------------------------------------------------------------------------
-
+# --------------------------------------------------------
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = ""
-EMAIL_HOST_PASSWORD = ""
+EMAIL_HOST_USER = os.environ.get("EMAIL_USER", default="")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_TOKEN", default="")
 
 # Loginyour mail
 # ------------------------------------------------------------------------------
 LOGIN_URL = "login"
-LOGOUT_REDIRECT_URL = "/home/"
+LOGOUT_REDIRECT_URL = "front:home"
 
 # Session
 # ------------------------------------------------------------------------------

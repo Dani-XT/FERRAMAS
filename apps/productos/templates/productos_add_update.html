@@ -34,181 +34,157 @@
 
 {% block content %}
 
+
+
+  <!-- Agregar Inmobiliaria -->
+<form action="{% url 'productos-add' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
   <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-6 gap-4 gap-md-0">
     <div class="d-flex flex-column justify-content-center">
-      <h4 class="mb-1">Crear nueva Inmobiliaria</h4>
-      <p class="mb-0">Crea una nueva Inmobiliaria</p>
+      <h4 class="mb-1">Crear nuevo Producto</h4>
+      <p class="mb-0">Crea un nuevo Producto</p>
     </div>
     <div class="d-flex align-content-center flex-wrap gap-4">
       <button class="btn btn-outline-secondary">Descartar</button>
-      <button type="submit" class="btn btn-primary">Crear</button>
+      <button type="submit" id="submit-all" class="btn btn-primary">Crear</button>
     </div>
   </div>
 
-  <!-- Agregar Inmobiliaria -->
-  
-  <div class="card mb-6 p-6">
-    <div class="card-header">
-      <h5 class="card-tile mb-0">Informacion Inmobiliaria</h5>
-    </div>
-    <div class="card-body">
-      <div class="row gx-5 mb-5">
-        <!-- Nombre Legal -->
-        <div class="col-12">
-          <div class="form-floating form-floating-outline mb-3">
-            <input type="text" class="form-control" placeholder="Ej: " name="nombre_legal">
-            <label for="nombre_legal">Nombre Legal</label>
-          </div>
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <div class="card mb-6 p-6">
+        <div class="card-header">
+          <h5 class="card-tile mb-0">Informacion Producto</h5>
         </div>
-        <!-- Nombre Comercial -->
-        <div class="col-6">
-          <div class="form-floating form-floating-outline mb-3">
-            <input type="text" class="form-control" placeholder="Ej: " name="nombre_comercial">
-            <label for="nombre_comercial">Nombre Comercial</label>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="form-floating form-floating-outline mb-3">
-            <input type="text" class="form-control" placeholder="12.345.678-9" name="rut">
-            <label for="ecommerce-product-name">RUT</label>
-          </div>
-        </div>
-      </div>
-      <!-- Descripcion colocar codigo para que retorne input -->
-      <div>
-        <label class="mb-1">Descripcion</label>
-        <div class="form-control p-0 pt-1">
-          <div class="comment-toolbar border-0 border-bottom">
-            <div class="d-flex justify-content-start">
-              <span class="ql-formats me-0">
-                <button class="ql-bold"></button>
-                <button class="ql-italic"></button>
-                <button class="ql-underline"></button>
-                <button class="ql-list" value="ordered"></button>
-                <button class="ql-list" value="bullet"></button>
-                <button class="ql-link"></button>
-                <button class="ql-image"></button>
-              </span>
+        <div class="card-body">
+          <div class="row gx-5 mb-5">
+            <!-- Nombre Legal -->
+            <div class="col-8">
+              <div class="form-floating form-floating-outline mb-3">
+                <input type="text"  name="nombre" class="form-control" placeholder="Ej: ">
+                <label for="nombre">Nombre Producto (Especifico)</label>
+              </div>
+            </div>
+            <!-- Nombre Comercial -->
+            <div class="col-4">
+              <div class="form-floating form-floating-outline mb-3">
+                <input type="text"  name="alias" class="form-control" placeholder="Ej: Tornillo">
+                <label for="alias">Alias</label>
+              </div>
             </div>
           </div>
-          <div class="comment-editor border-0 pb-1" id="descripcion"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Detalles -->
-  <div class="card mb-6 p-6">
-    <div class="card-header">
-      <h5 class="card-title mb-0">Detalles Inmobiliaria</h5>
-    </div>
-    <div class="card-body">  
-      <div class="row gx-5">
-        <h6>Contacto</h5>
-        <!-- Correo -->
-        <div class="col-4">
-          <div class="form-floating form-floating-outline mb-3">
-            <input type="email" class="form-control" placeholder="Ej: " name="correo">
-            <label for="correo">Correo</label>
-          </div>
-        </div>
-        <!-- Telefono -->
-        <div class="col-4">
-          <div class="form-floating form-floating-outline mb-3">
-            <input type="text" class="form-control" placeholder="Ej: " name="correo">
-            <label for="correo">Telefono</label>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="form-floating form-floating-outline mb-3">
-            <input type="text" class="form-control" placeholder="Ej: " name="correo">
-            <label for="correo">Fecha Creacion</label>
-          </div>
-        </div>
-        <!-- Sitio Web -->
-        <div class="col-12">
-          <div class="form-floating form-floating-outline mb-3">
-            <input type="text" class="form-control" placeholder="Ej: " name="correo">
-            <label for="correo">Sitio Web</label>
-          </div>
-        </div>
-        <h6>Ubicacion</h5>
-        <!-- Direccion -->
-        <div class="col-8">
-          <div class="form-floating form-floating-outline mb-3">
-            <input type="text" class="form-control" placeholder="Ej: " name="direccion_principal">
-            <label for="direccion_principal">Direccion Principal</label>
-          </div>
-        </div>
-        <!-- Numero direccion -->
-        <div class="col-md-4 mb-5">
-          <div class="form-floating form-floating-outline">
-            <input type="text" name="numero_casa" class="form-control" placeholder="0452" />
-            <label for="numero_casa">Numero</label>
-          </div>
-        </div>
-        <!-- Comunas -->
-        <div class="col-sm-6 mb-5">
-          <div class="form-floating form-floating-outline">
-            <select name="comuna" class="select2 form-select" data-placeholder="Seleccione una comuna" data-allow-clear="true">
-              <option></option>
-              {% for c in comunas %}
-              <option value="{{c.id}}">{{c.nombre}}</option>
-              {% endfor %}
-            </select>
-            <label for="comuna">Comuna</label>
-          </div>
-        </div>
-        <!-- Provincias -->
-        <div class="col-sm-6 mb-5">
-          <div class="form-floating form-floating-outline">
-            <select name="provincia" class="select2 form-select" data-placeholder="Seleccione una Provincia" data-allow-clear="true">
-              <option></option>
-              {% for p in provincias %}
-              <option value="{{p.id}}">{{p.nombre}}</option>
-              {% endfor %}
-            </select>
-            <label for="provincia">Provincia</label>
-          </div>
-        </div>
-        <!-- Regiones -->
-        <div class="col-sm-6 mb-5">
-          <div class="form-floating form-floating-outline">
-            <select name="region" class="select2 form-select" data-placeholder="Seleccione una Region" data-allow-clear="true">
-              <option></option>
-              {% for r in regiones %}
-              <option value="{{r.numero}}">{{r.nombre}}</option>
-              {% endfor %}
-            </select>
-            <label for="region">Region</label>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Imagen -->
-  <div class="card mb-6">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0 card-title">Logo de Inmobiliaria</h5>
-      <a href="javascript:void(0);" class="fw-medium">Add media from URL</a>
-    </div>
-    <div class="card-body">
-      <form action="/upload" class="dropzone needsclick" id="dropzone-basic">
-        <div class="dz-message needsclick">
-          <div class="d-flex justify-content-center">
-            <div class="avatar avatar-md">
-              <span class="avatar-initial rounded bg-label-secondary">
-                <i class="ri-upload-2-line ri-24px"></i>
-              </span>
+          <!-- Descripcion colocar codigo para que retorne input -->
+          <div>
+            <label class="mb-1">Descripcion</label>
+            <div class="form-control p-0 pt-1">
+              <div class="comment-toolbar border-0 border-bottom">
+                <div class="d-flex justify-content-start">
+                  <span class="ql-formats me-0">
+                    <button class="ql-bold"></button>
+                    <button class="ql-italic"></button>
+                    <button class="ql-underline"></button>
+                    <button class="ql-list" value="ordered"></button>
+                    <button class="ql-list" value="bullet"></button>
+                    <button class="ql-link"></button>
+                    <button class="ql-image"></button>
+                  </span>
+                </div>
+              </div>
+              <div class="comment-editor border-0 pb-1" id="descripcion"></div>
             </div>
           </div>
-          <p class="h4 needsclick my-2">Drag and drop your image here</p>
-          <small class="text-muted d-block fs-6 my-2">or</small>
-          <span class="needsclick btn btn-sm btn-outline-primary" id="btnBrowse">Browse image</span>
+          <input type="hidden" name="descripcion" value="pruebaa">
         </div>
-        <div class="fallback">
-          <input name="file" type="file" />
+      </div>
+      <!-- Imagen -->
+      <div class="card mb-6">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0 card-title">Imagen del Producto</h5>
         </div>
-      </form>
+        <div class="card-body">
+          <div class="dropzone needsclick" data-dropzone-max="5" data-dropzone-url="{% url 'productos-add' %}" data-dropzone-name="imagenes">
+            <div class="dz-message needsclick">
+              <div class="d-flex justify-content-center">
+                <div class="avatar avatar-md">
+                  <span class="avatar-initial rounded bg-label-secondary">
+                    <i class="ri-upload-2-line ri-24px"></i>
+                  </span>
+                </div>
+              </div>
+              <p class="h4 needsclick my-2">Coloca tus imagenes Aqui</p>
+              <small class="text-muted d-block fs-6 my-2">or</small>
+              <span class="needsclick btn btn-sm btn-outline-primary" id="btnBrowse">Seleccionar Imagenes</span>
+            </div>
+            <div class="fallback">
+              <input name="imagenasdases" type="file" multiple />
+            </div>
+          </div>
+          <input name="imagenes" type="file" multiple />
+        </div>
+      </div>
     </div>
+    <div class="col-12 col-lg-4">
+    <!-- Pricing Card -->
+      <div class="card mb-6">
+        <div class="card-header">
+          <h5 class="card-title mb-0">Precio</h5>
+        </div>
+        <div class="card-body">
+          <div class="row gx-5 mb-5">
+            <!-- Base Price -->
+            <div class="col-lg-6 col-12">
+              <div class="form-floating form-floating-outline mb-5">
+                <input type="text" class="form-control cleave" data-cleave-type="moneda" name="precio" placeholder="Precio" aria-label="Precio del Producto">
+                <label for="precio">Precio</label>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12">
+              <div class="form-floating form-floating-outline mb-5">
+                <input type="text" class="form-control cleave" data-cleave-type="numero" name="cantidad" placeholder="Cantidad" aria-label="Cantidad">
+                <label for="cantidad">Cantidad</label>
+              </div>
+            </div>
+            <div class="mb-5 col ecommerce-select2-dropdown">
+              <select class="form-select form-select-sm" name="marca" data-placeholder="Select Vendor">
+                <option value="">Seleccione la Marca</option>
+                <option value="marca">Marca 1</option>
+              </select>
+            </div>
+            <div class="mb-5 col ecommerce-select2-dropdown">
+              <select class="form-select form-select-sm" name="status" data-placeholder="Select Vendor">
+                <option value="">Seleccione Estado del Producto</option>
+                {% for estado in estados %}
+                  <option value="{{estado.id}}">{{estado.nombre}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <!-- Charge tax check box -->
+            <div class="form-check my-2">
+              <input class="form-check-input" type="checkbox" value="" id="price-charge-tax" checked>
+              <label class="mb-2 text-heading" for="price-charge-tax">
+                Aplicar Impuesto al producto
+              </label>
+            </div>
+            <!-- Instock switch -->
+            <div class="d-flex justify-content-between align-items-center pt-4">
+              <p class="mb-0">En stock</p>
+              <div class="w-25 d-flex justify-content-end">
+                <div class="form-check form-switch me-n3">
+                  <input type="checkbox" name="stock" class="form-check-input" checked />
+                </div>
+              </div>
+            </div>
+              <div class="d-flex justify-content-between align-items-center border-top pt-4">
+              <p class="mb-0">Precio Final</p>
+              <span>$-</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Pricing Card -->
+      <!-- /Organize Card -->
+    </div>
+    <!-- /Second column -->
   </div>
+</form>
 {% endblock %}

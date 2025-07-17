@@ -17,12 +17,14 @@ node_modules/
 
 # C extensions
 *.so
+.env
+
 
 # Distribution / packaging
 .Python
 build/
 env/
-media/
+
 develop-eggs/
 dist/
 downloads/
@@ -139,6 +141,7 @@ celerybeat.pid
 env/
 venv/
 ENV/
+media/
 env.bak/
 venv.bak/
 

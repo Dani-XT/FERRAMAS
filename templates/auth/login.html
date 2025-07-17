@@ -49,8 +49,8 @@
         <div class="card-body mt-1">
           <h4 class="mb-1">Welcome to {% get_theme_variables 'template_name' %}! 👋🏻</h4>
           <p class="mb-5">Please sign-in to your account and start the adventure</p>
-
-          <form id="formAuthentication" class="mb-5" method="post" action="{% url 'login' %}">
+          
+          <form id="formAuthentication" class="mb-5" action="{% url 'login' %}" method="post" >
             {% csrf_token %}
             <div class="form-floating form-floating-outline mb-5">
               <input type="email" class="form-control" id="email" name="email-username" value="" placeholder="Email/Username" autofocus />
@@ -80,11 +80,20 @@
                 <span>Forgot Password?</span>
               </a>
             </div>
+            {% if request.GET.next %}
+              <input type="hidden" name="next" value="{{request.GET.next}}">
+            {% endif %}
             <div class="mb-5">
               <button class="btn btn-primary d-grid w-100" type="submit">login</button>
             </div>
           </form>
-
+          {% if messages %}
+          {% for message in messages %}
+          <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% else %}alert-warning{% endif %}" role="alert">
+            {{ message }}
+          </div>
+          {% endfor %}
+          {% endif %}
           <p class="text-center mb-5">
             <span>New on our platform?</span>
             <a href="{% url 'register' %}">

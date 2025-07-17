@@ -3,20 +3,14 @@ from django.core.management import call_command
 
 # Modelos
 from apps.utils.models import GrupoValor, ValorSistema
-from auth.models import (
-    SituacionPrevisional,
-    CondicionHabitacional,
-    PostulacionesPrevias,
-    Sexo,
-    NivelEducacional
-)
+from apps.productos.models import Status
 
 class Command(BaseCommand):
     help = "Genera las tablas y relaciones básicas del sistema"
 
     def handle(self, *args, **kwargs):
         self.poblar_grupo_tiempo()
-        self.poblar_modelos_usuario()
+        self.poblar_producto()
         self.ejecutar_poblar_chile()
 
     def poblar_grupo_tiempo(self):
@@ -51,46 +45,21 @@ class Command(BaseCommand):
             msg = f'  → Valor "{clave}" {"creado" if creado else "ya existe"}'
             self.stdout.write(self.style.SUCCESS(msg) if creado else self.style.WARNING(msg))
 
-    def poblar_modelos_usuario(self):
-        datos = {
-            SituacionPrevisional: [
-                ("AFP", "Cotiza en AFP"),
-                ("Independiente", "Independiente"),
-                ("Informal", "Trabajo Informal"),
-                ("Cesante", "Cesante"),
-            ],
-            CondicionHabitacional: [
-                ("Allegado", "Allegado"),
-                ("Arrendatario", "Arrendatario"),
-                ("Propietario", "Propietario"),
-                ("Otro", "Otro"),
-            ],
-            PostulacionesPrevias: [
-                ("Ninguna", "No ha postulado anteriormente"),
-                ("Anterior con rechazo", "Postulación rechazada"),
-                ("Anterior con éxito", "Postulación exitosa"),
-            ],
-            Sexo: [
-                ("Femenino", "Mujer"),
-                ("Masculino", "Hombre"),
-                ("Otro", "Prefiere no decir"),
-            ],
-            NivelEducacional: [
-                ("Básica", "Educación Básica"),
-                ("Media", "Educación Media"),
-                ("Técnico", "Técnico Profesional"),
-                ("Universitaria", "Universitaria o superior"),
-            ],
-        }
+    def poblar_producto(self):
+        estados = [
+            ("Disponible", "Producto disponible para la venta"),
+            ("Pendiente", "Producto en espera de aprobación o carga"),
+            ("No Disponible", "Producto fuera de stock o suspendido")
+        ]
 
-        for modelo, valores in datos.items():
-            for nombre, descripcion in valores:
-                obj, creado = modelo.objects.get_or_create(
-                    nombre=nombre,
-                    defaults={"descripcion": descripcion}
-                )
-                msg = f'{modelo.__name__} "{nombre}" {"creado" if creado else "ya existe"}'
-                self.stdout.write(self.style.SUCCESS(f'✔️ {msg}') if creado else self.style.WARNING(f'⚠️ {msg}'))
+        for nombre, descripcion in estados:
+            status, creado = Status.objects.get_or_create(
+                nombre=nombre,
+                defaults={'descripcion': descripcion}
+            )
+            msg = f'  → Estado "{nombre}" {"creado" if creado else "ya existe"}'
+            self.stdout.write(self.style.SUCCESS(msg) if creado else self.style.WARNING(msg))
+
 
     def ejecutar_poblar_chile(self):
         try:

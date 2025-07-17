@@ -1,18 +1,20 @@
 # Renderizacion Template
-from web_project import TemplateLayout
-from django.views.generic import TemplateView
-from web_project.template_helpers.theme import TemplateHelper
+from django.views.generic import DeleteView
 
 # Permisos
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
+# contribuciones
+from django.shortcuts import redirect
+from django.contrib import messages
+from apps.productos.helpers import get_producto
 
-class ProductosDeleteView(PermissionRequiredMixin, TemplateView):
+class ProductosDeleteView(PermissionRequiredMixin, DeleteView):
     permission_required = ("auth.view_user")
 
-    def get_context_data(self, **kwargs):
-        context = TemplateLayout.init(self, super().get_context_data(**kwargs))
-        
-        TemplateHelper.map_context(context)
-        return context
-    
+    def get(self, request, pk):
+        producto = get_producto(pk)
+        producto.delete()
+
+        messages.success(request, f"El producto {producto.nombre} fue eliminado correctamente")
+        return redirect('productos-list')

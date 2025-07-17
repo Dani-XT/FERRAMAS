@@ -26,9 +26,6 @@ class LoginView(AuthView):
             username = request.POST.get("email-username")
             password = request.POST.get("password")
 
-            print(username)
-            print(password)
-
             if not (username and password):
                 messages.error(request, "Please enter your username and password.")
                 return redirect("login")
@@ -51,10 +48,11 @@ class LoginView(AuthView):
                 login(request, authenticated_user)
 
                 # Redirect to the page the user was trying to access before logging in
+                print(request.POST)
                 if "next" in request.POST:
                     return redirect(request.POST["next"])
-                else: 
-                    return redirect("admin:home")
+                else: # Redirect to the home page or another appropriate page
+                    return redirect("front:home")
             else:
                 messages.error(request, "Please enter a valid username.")
                 return redirect("login")

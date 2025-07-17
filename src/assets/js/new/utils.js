@@ -748,17 +748,42 @@ function buildDropzone(dropzoneList) {
     </div>`;
 
   dropzoneList.forEach(dropzone => {
-    const type = dropzone.getAttribute('data-dropzone-type') || 'basic';
-    const maxFile = parseInt(dropzone.getAttribute('data-dropzone-max')) || 1;
+    // Validación para evitar múltiples instancias
+    if (Dropzone.instances.some(instance => instance.element === dropzone)) return;
 
+    const url = dropzone.getAttribute('data-dropzone-url') || '#';
+    const maxFile = parseInt(dropzone.getAttribute('data-dropzone-max')) || 1;
+    const acceptedFiles = dropzone.getAttribute('data-dropzone-accepted') || 'image/*';
+    const auto = dropzone.getAttribute('data-auto-upload') !== 'false';
+    const maxFileSize = dropzone.getAttribute('data-dropzone-size') || 5;
+    const name = dropzone.getAttribute('data-dropzone-name') || 'file';
+    
+    Dropzone.autoDiscover = false;
     new Dropzone(dropzone, {
-      previewTemplate: previewTemplate,
-      url: '/upload', // puedes cambiar esto por un endpoint real o falso si estás probando
-      parallelUploads: 1,
-      maxFilesize: 5, // en MB
+      url: url,
+      paramName: name,
       maxFiles: maxFile,
+      maxFilesize: maxFileSize, // MB
+      acceptedFiles: acceptedFiles,
+      parallelUploads: 1,
+      previewTemplate: previewTemplate,
       addRemoveLinks: true,
-      acceptedFiles: 'image/*'
+      autoProcessQueue: false,
+      init() {
+        const myDropzone = this;
+        this.element.querySelector("#submit-all").addEventListener("click", function(e){
+          e.preventDefault();
+          e.stopPropagation();
+          myDropzone.processQueue();
+        });
+        this.on("success", function(file, response) {
+          window.location.href=JSON.parse(file.xhr.response).url
+        })
+      }
     });
   });
+}
+
+function sendDropzone() {
+
 }
