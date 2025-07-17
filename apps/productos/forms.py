@@ -13,10 +13,10 @@ class ProductoAddUpdateForm(forms.Form):
     alias = forms.CharField(max_length=150)
     descripcion = forms.CharField(widget=forms.Textarea)
     precio = forms.CharField(max_length=150)
-    stock = forms.BooleanField()
+    stock = forms.BooleanField(required=False)
     cantidad = forms.IntegerField(validators=[MinValueValidator(0)])
     status = forms.ModelChoiceField(queryset=Status.objects.all())
-    imagenes = MultipleImageField(required=True)
+    # imagenes = MultipleImageField(required=True)
 
     def __init__(self, *args, instance=None, **kwargs):
         super().__init__(*args, **kwargs)

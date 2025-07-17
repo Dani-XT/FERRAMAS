@@ -11,4 +11,4 @@ def get_all_productos():
     return Producto.objects.all().order_by('id')
 
 def get_producto_detail(pk):
-    producto = get_object_or_404(Producto, pk=pk)
+    return get_object_or_404(Producto, pk=pk)

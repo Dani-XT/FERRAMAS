@@ -79,11 +79,22 @@ function initGlobalEventListener() {
   });
 
   document.addEventListener("submit", function (e) {
+    const form = e.target.closest("form")
     const formLocalStorage = e.target.closest("form[data-local-storage=true]")
+
     if (formLocalStorage) {
       e.preventDefault()
       initLocalStorageFunction(formLocalStorage)
     }
+
+    if (form && form.querySelector(".dropzone")) {
+      e.preventDefault();
+      sendDropzone(form);
+    }
+
+    setTimeout(() => {
+      form.submit(); // 🔁 envío manual
+    }, 100); 
   })
 }
 // ---------------------------------------------
@@ -738,9 +749,6 @@ function buildDropzone(dropzoneList) {
           <div class="dz-success-mark"></div>
           <div class="dz-error-mark"></div>
           <div class="dz-error-message"><span data-dz-errormessage></span></div>
-          <div class="progress">
-            <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-dz-uploadprogress></div>
-          </div>
         </div>
         <div class="dz-filename" data-dz-name></div>
         <div class="dz-size" data-dz-size></div>
@@ -748,42 +756,67 @@ function buildDropzone(dropzoneList) {
     </div>`;
 
   dropzoneList.forEach(dropzone => {
-    // Validación para evitar múltiples instancias
     if (Dropzone.instances.some(instance => instance.element === dropzone)) return;
 
-    const url = dropzone.getAttribute('data-dropzone-url') || '#';
-    const maxFile = parseInt(dropzone.getAttribute('data-dropzone-max')) || 1;
-    const acceptedFiles = dropzone.getAttribute('data-dropzone-accepted') || 'image/*';
-    const auto = dropzone.getAttribute('data-auto-upload') !== 'false';
-    const maxFileSize = dropzone.getAttribute('data-dropzone-size') || 5;
     const name = dropzone.getAttribute('data-dropzone-name') || 'file';
-    
+    const inputReal = document.querySelector(`input[name="${name}"]`);
+
     Dropzone.autoDiscover = false;
-    new Dropzone(dropzone, {
-      url: url,
-      paramName: name,
-      maxFiles: maxFile,
-      maxFilesize: maxFileSize, // MB
-      acceptedFiles: acceptedFiles,
-      parallelUploads: 1,
-      previewTemplate: previewTemplate,
-      addRemoveLinks: true,
+    const dz = new Dropzone(dropzone, {
+      url: "#", // no se usará
       autoProcessQueue: false,
-      init() {
+      clickable: true,
+      paramName: name,
+      previewTemplate: previewTemplate,
+      maxFiles: 10,
+      maxFilesize: 5,
+      acceptedFiles: 'image/*',
+      addRemoveLinks: true,
+      init: function () {
         const myDropzone = this;
-        this.element.querySelector("#submit-all").addEventListener("click", function(e){
-          e.preventDefault();
-          e.stopPropagation();
-          myDropzone.processQueue();
+
+        document.querySelector("#mi-formulario").addEventListener("submit", function (e) {
+          console.log("al enviar formulario");
+
+          const dataTransfer = new DataTransfer();
+          myDropzone.files.forEach(file => {
+            dataTransfer.items.add(file);
+          });
+
+          if (inputReal) {
+            inputReal.files = dataTransfer.files;
+          }
+
+          // OJO: NO uses e.preventDefault() aquí si quieres enviar el formulario normal
         });
-        this.on("success", function(file, response) {
-          window.location.href=JSON.parse(file.xhr.response).url
-        })
       }
     });
   });
 }
 
-function sendDropzone() {
 
+function sendDropzone(formElement) {
+  // const dropzones = Dropzone.instances;
+
+  // dropzones.forEach(dz => {
+  //   const paramName = dz.options.paramName;
+
+  //   // Elimina input previos si se reenvía
+  //   formElement.querySelectorAll(`input[name="${paramName}[]"]`).forEach(i => i.remove());
+
+  //   dz.files.forEach(file => {
+  //     // Solo los aceptados y no removidos
+  //     if (file.status === "success" || file.status === "added") {
+  //       const reader = new FileReader();
+  //       reader.onload = function(e) {
+  //         const input = document.createElement("input");
+  //         input.type = "hidden";
+  //         input.name = `${paramName}[]`;
+  //         input.value = e.target.result;
+  //         formElement.appendChild(input);
+  //       };
+  //       reader.readAsDataURL(file);
+  //     }
+  //   });
+  // });
 }
