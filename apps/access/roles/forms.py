@@ -5,8 +5,6 @@ from apps.access.roles.models import DescripcionGrupo
 class AddUpdateGrupoForm(forms.Form):
     nombre = forms.CharField(max_length=150)
     descripcion = forms.CharField(widget=forms.Textarea)
-    bg_color = forms.CharField(max_length=150, required=False)
-    icono = forms.CharField(max_length=150, required=False)
     permisos = forms.ModelMultipleChoiceField(queryset=Permission.objects.all(), required=True)
     
 
@@ -37,23 +35,17 @@ class AddUpdateGrupoForm(forms.Form):
 
             desc_grupo = self.instance.descripcion
             desc_grupo.descripcion = data["descripcion"]
-            desc_grupo.bg_color = data["bg_color"]
-            desc_grupo.icono = data["icono"]
             desc_grupo.save()
 
             self.instance.permissions.set(data["permisos"])
             return self.instance
         else:
-            grupo = Group.objects.create(
-                name=data["nombre"]
-            )
-            desc_grupo = DescripcionGrupo.objects.create(
-                grupo=grupo,
-                descripcion=data["descripcion"],
-                bg_color=data["bg_color"],
-                icono=data["icono"]
-            )
+            grupo = Group.objects.create(name=data["nombre"])
+            desc_grupo = DescripcionGrupo.objects.create(grupo=grupo,descripcion=data["descripcion"])
             grupo.permissions.set(data["permisos"])
             return grupo
+            
+            
+            
 
   

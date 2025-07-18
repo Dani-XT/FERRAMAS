@@ -33,8 +33,8 @@
 {% endif %}
   {% csrf_token %}
   <!-- Formulario creacion Planes-->
-  <div class="col-12 mb-lg-0 mb-6">
-    <div class="card p-sm-12 p-6">
+  <div class="col-12 mb-lg-6 mb-6">
+    <div class="card p-sm-12">
       <div class="card-body rounded p-6 pt-2 px-2 text-heading">
         <div class="row mx-0 px-3">
           <!-- Header descripcion plan -->
@@ -58,24 +58,6 @@
             <div class="form-floating form-floating-outline mb-3">
               <textarea type="text" id="descripcion" name="descripcion" class="form-control autosize" placeholder="Descripcion del Grupo">{% if grupo %}{{grupo.descripcion}}{% endif %}</textarea>
               <label for="descripcion">Descripcion</label>
-            </div>
-          </div>
-          <!-- Color -->
-          <div class="col-6">
-            <h6 class="text-muted mb-1">Color:</h6>
-            <div class="classic form-control d-flex align-items-center">
-              <div class="custom-color-picker" data-color-target="grupo_1" {% if grupo %}data-color-picker="{{grupo.bg_color}}"{% endif %}></div>
-              <span class="mx-2" data-color-target-text="grupo_1">{% if grupo %}{{grupo.bg_color}}{% else %}Sin color asignado{% endif %}</span>
-              <input type="hidden" data-color-target-input="grupo_1" name="bg_color" {% if grupo %}value="{{grupo.bg_color}}"{% endif %}>
-            </div>
-          </div>
-          <!-- Icono -->
-          <div class="col-6">
-            <h6 class="text-muted mb-1">Icono:</h6>
-            <div class="form-control d-flex align-items-center custom-modal text-center" data-icono-target="grupo_1" data-urls="{% url 'utils:modal-iconos' %}" data-search="true">
-              <i class="menu-icon tf-icons {% if grupo %}{{grupo.icono}}{% else %}ri-add-circle-line{% endif %} ri-22x text-primary" data-icono-target-preview="grupo_1"></i>
-              <span class="mx-2" data-icono-target-text="grupo_1">{% if grupo %}{{grupo.icono}}{% else %}Sin icono asignado{% endif %}</span>
-              <input type="hidden" data-icono-target-input="grupo_1" name="icono" {% if grupo %}value="{{grupo.icono}}"{% endif %}>
             </div>
           </div>
         </div>
@@ -136,7 +118,7 @@
   </div>
   <div class="col-12 text-center mt-12 pb-4">
     <button type="submit" class="btn btn-primary me-3">Submit</button>
-    <a href="" class="btn btn-outline-secondary">Cancel</a>
+    <a href="{% url 'roles-list' %}" class="btn btn-outline-secondary">Cancel</a>
   </div>
 
 </form>

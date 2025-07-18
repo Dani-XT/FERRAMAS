@@ -35,12 +35,16 @@
 <h4 class="mb-1">Agregar Tecnicos</h4>
 <p class="mb-6">Formulario para la creacion de los nuevos Tecnicos en el sistema.</p>
 
-<form id="addUsuarioForm" action="{% url 'usuarios-add' %}" method="post" >
+{% if usuario %}
+<form action="{% url 'usuarios-update' usuario.id %}" method="post" >
+{% else %}
+<form action="{% url 'usuarios-add' %}" method="post" >
+{% endif %}
   {% csrf_token %}
   <div class="row">
     <!-- Imagen -->
     <div class="col-xl-3 col-lg-4 col-md-4">
-      <div class="card mb-2 h-100">
+      <div class="card h-100">
         <h5 class="card-header">Avatar</h5>
         <div class="card-body">
           <div class="user-avatar-section">
@@ -58,16 +62,25 @@
     
     <!-- DATOS PERSONALES -->
     <div class="col-xl-9 col-lg-8 col-md-8">
-      <div class="card mb-6 pb-6">
+      <div class="card pb-6">
         <h5 class="card-header">Datos Personales</h5>
         <div class="card-body pt-0">
           <div class="row g-5">
+            <div class="col-md-6">
+              <div class="input-group input-group-merge">
+                <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ri-user-line ri-20px"></i></span>
+                <div class="form-floating form-floating-outline">
+                  <input class="form-control" type="text" id="username" name="username" autofocus {% if usuario %}value="{{usuario.username}}"{% endif %}>
+                  <label for="username">Username</label>
+                </div>
+              </div>
+            </div>
             <!-- Nombre -->
             <div class="col-md-6">
               <div class="input-group input-group-merge">
                 <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ri-user-line ri-20px"></i></span>
                 <div class="form-floating form-floating-outline">
-                  <input class="form-control" type="text" id="nombre" name="nombre" autofocus>
+                  <input class="form-control" type="text" id="nombre" name="nombre" autofocus {% if usuario %}value="{{usuario.first_name}}"{% endif %}>
                   <label for="nombre">Nombre </label>
                 </div>
               </div>
@@ -77,7 +90,7 @@
               <div class="input-group input-group-merge">
                 <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ri-user-line ri-20px"></i></span>
                 <div class="form-floating form-floating-outline">
-                  <input class="form-control" type="text" id="apellido" name="apellido" autofocus>
+                  <input class="form-control" type="text" id="apellido" name="apellido" {% if usuario %}value="{{usuario.last_name}}"{% endif %}>
                   <label for="apellido">Apellido </label>
                 </div>
               </div>
@@ -87,7 +100,7 @@
               <div class="input-group input-group-merge">
                 <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ri-mail-line ri-20px"></i></span>
                 <div class="form-floating form-floating-outline">
-                  <input class="form-control" type="mail" id="email" name="email" autofocus>
+                  <input class="form-control" type="mail" id="email" name="email" {% if usuario %}value="{{usuario.email}}"{% endif %}>
                   <label for="email">E-mail </label>
                 </div>
               </div>
@@ -98,7 +111,7 @@
                 <select id="selectRol" class="select2 form-select form-select-lg" data-allow-clear="true" name="grupo">
                   <option value="" disabled selected>Seleccione un rol</option>
                   {% for grupo in grupos %}
-                    <option value="{{ grupo.id }}">{{ grupo.name }}</option>
+                    <option value="{{ grupo.id }}" {% if usuario.groups.first.id == grupo.id %}selected{% endif %}>{{ grupo.name }}</option>
                   {% endfor %}
                 </select>
                 <label for="selectRol">Rol</label>
@@ -106,12 +119,6 @@
             </div>
           </div>
         </div>
-      </div>
-      
-
-      <div class="mt-6 d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary me-3">Crear</button>
-        <button type="reset" class="btn btn-outline-secondary">Descartar</button>
       </div>
       {% if messages %}
         {% for message in messages %}
@@ -121,6 +128,10 @@
         {% endfor %}
       {% endif %}
     </div>
+  </div>
+  <div class="mt-6 d-flex justify-content-end">
+    <button type="submit" class="btn btn-primary me-3">Crear</button>
+    <button type="reset" class="btn btn-outline-secondary">Descartar</button>
   </div>
 </form>
 {% endblock %}

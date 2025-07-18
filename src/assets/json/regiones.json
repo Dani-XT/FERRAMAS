@@ -1,0 +1,82 @@
+[
+  {
+    "id": 2,
+    "numero": 1,
+    "nombre": "Región de Tarapacá"
+  },
+  {
+    "id": 3,
+    "numero": 2,
+    "nombre": "Región de Antofagasta"
+  },
+  {
+    "id": 4,
+    "numero": 3,
+    "nombre": "Región de Atacama"
+  },
+  {
+    "id": 5,
+    "numero": 4,
+    "nombre": "Región de Coquimbo"
+  },
+  {
+    "id": 6,
+    "numero": 5,
+    "nombre": "Región de Valparaíso"
+  },
+  {
+    "id": 8,
+    "numero": 6,
+    "nombre": "Región del Libertador General Bernardo O'Higgins"
+  },
+  {
+    "id": 9,
+    "numero": 7,
+    "nombre": "Región del Maule"
+  },
+  {
+    "id": 10,
+    "numero": 8,
+    "nombre": "Región del Biobío"
+  },
+  {
+    "id": 11,
+    "numero": 9,
+    "nombre": "Región de la Araucanía"
+  },
+  {
+    "id": 13,
+    "numero": 10,
+    "nombre": "Región de Los Lagos"
+  },
+  {
+    "id": 14,
+    "numero": 11,
+    "nombre": "Región Aysén del General Carlos Ibáñez del Campo"
+  },
+  {
+    "id": 15,
+    "numero": 12,
+    "nombre": "Región de Magallanes y de la Antártica Chilena"
+  },
+  {
+    "id": 7,
+    "numero": 13,
+    "nombre": "Región Metropolitana de Santiago"
+  },
+  {
+    "id": 12,
+    "numero": 14,
+    "nombre": "Región de Los Ríos"
+  },
+  {
+    "id": 1,
+    "numero": 15,
+    "nombre": "Región de Arica y Parinacota"
+  },
+  {
+    "id": 16,
+    "numero": 16,
+    "nombre": "Región de Ñuble"
+  }
+]

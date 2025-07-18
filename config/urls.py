@@ -35,7 +35,7 @@ urlpatterns = [
     path("utils/", include("apps.utils.urls")),
 
     # -------------------- API --------------------
-    # path("api/", include("api.urls")),
+    path("api/", include("api.urls")),
 
     path('admin/django/default/', admin.site.urls),
 ]

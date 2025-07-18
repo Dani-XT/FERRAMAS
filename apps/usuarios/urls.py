@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 # Views personalizados
 from apps.usuarios.views import UsuariosView
 
-from apps.usuarios.usuarios_list.views import UsuariosListView
 
 from apps.usuarios.usuarios_add_update.views import UsuariosAddUpdateView
 from apps.usuarios.usuarios_detail.views import UsuariosDetailView
@@ -12,7 +11,7 @@ from apps.usuarios.usuarios_delete.views import UsuariosDeleteView
 
 urlpatterns = [
     path(
-        "usuarios/list/",
+        "usuarios/",
         login_required(UsuariosView.as_view(template_name="usuarios_list.html")),
         name="usuarios-list",
     ),

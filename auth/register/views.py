@@ -20,6 +20,8 @@ class RegisterView(AuthView):
         username = request.POST.get("username")
         email = request.POST.get("email")
         password = request.POST.get("password")
+        nombre = request.POST.get("nombre")
+        apellido = request.POST.get("apellido")
 
         # Check if a user with the same username or email already exists
         if User.objects.filter(username=username, email=email).exists():
@@ -33,7 +35,7 @@ class RegisterView(AuthView):
             return redirect("register")
 
         # Create the user and set their password
-        created_user = User.objects.create_user(username=username, email=email, password=password)
+        created_user = User.objects.create_user(username=username, email=email, password=password, first_name = nombre, last_name= apellido)
         created_user.set_password(password)
         created_user.save()
 

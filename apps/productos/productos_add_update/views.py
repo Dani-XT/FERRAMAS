@@ -2,12 +2,12 @@
 from web_project import TemplateLayout
 from django.views.generic import TemplateView
 from web_project.template_helpers.theme import TemplateHelper
-from django.shortcuts import redirect
 
 # Permisos
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
 # Contrib
+from django.shortcuts import redirect
 from django.contrib import messages
 from apps.productos.helpers import get_producto, get_all_estados
 from apps.productos.forms import ProductoAddUpdateForm

@@ -1,0 +1,1732 @@
+[
+  {
+    "id": 1,
+    "nombre": "Arica",
+    "provincia_id": 1
+  },
+  {
+    "id": 2,
+    "nombre": "Camarones",
+    "provincia_id": 1
+  },
+  {
+    "id": 3,
+    "nombre": "General Lagos",
+    "provincia_id": 2
+  },
+  {
+    "id": 4,
+    "nombre": "Putre",
+    "provincia_id": 2
+  },
+  {
+    "id": 5,
+    "nombre": "Alto Hospicio",
+    "provincia_id": 3
+  },
+  {
+    "id": 6,
+    "nombre": "Iquique",
+    "provincia_id": 3
+  },
+  {
+    "id": 7,
+    "nombre": "Camiña",
+    "provincia_id": 4
+  },
+  {
+    "id": 8,
+    "nombre": "Colchane",
+    "provincia_id": 4
+  },
+  {
+    "id": 9,
+    "nombre": "Huara",
+    "provincia_id": 4
+  },
+  {
+    "id": 10,
+    "nombre": "Pica",
+    "provincia_id": 4
+  },
+  {
+    "id": 11,
+    "nombre": "Pozo Almonte",
+    "provincia_id": 4
+  },
+  {
+    "id": 12,
+    "nombre": "Antofagasta",
+    "provincia_id": 5
+  },
+  {
+    "id": 13,
+    "nombre": "Mejillones",
+    "provincia_id": 5
+  },
+  {
+    "id": 14,
+    "nombre": "Sierra Gorda",
+    "provincia_id": 5
+  },
+  {
+    "id": 15,
+    "nombre": "Taltal",
+    "provincia_id": 5
+  },
+  {
+    "id": 16,
+    "nombre": "Calama",
+    "provincia_id": 6
+  },
+  {
+    "id": 17,
+    "nombre": "Ollagüe",
+    "provincia_id": 6
+  },
+  {
+    "id": 18,
+    "nombre": "San Pedro de Atacama",
+    "provincia_id": 6
+  },
+  {
+    "id": 19,
+    "nombre": "María Elena",
+    "provincia_id": 7
+  },
+  {
+    "id": 20,
+    "nombre": "Tocopilla",
+    "provincia_id": 7
+  },
+  {
+    "id": 21,
+    "nombre": "Chañaral",
+    "provincia_id": 8
+  },
+  {
+    "id": 22,
+    "nombre": "Diego de Almagro",
+    "provincia_id": 8
+  },
+  {
+    "id": 23,
+    "nombre": "Caldera",
+    "provincia_id": 9
+  },
+  {
+    "id": 24,
+    "nombre": "Copiapó",
+    "provincia_id": 9
+  },
+  {
+    "id": 25,
+    "nombre": "Tierra Amarilla",
+    "provincia_id": 9
+  },
+  {
+    "id": 26,
+    "nombre": "Alto del Carmen",
+    "provincia_id": 10
+  },
+  {
+    "id": 27,
+    "nombre": "Freirina",
+    "provincia_id": 10
+  },
+  {
+    "id": 28,
+    "nombre": "Huasco",
+    "provincia_id": 10
+  },
+  {
+    "id": 29,
+    "nombre": "Vallenar",
+    "provincia_id": 10
+  },
+  {
+    "id": 30,
+    "nombre": "Canela",
+    "provincia_id": 11
+  },
+  {
+    "id": 31,
+    "nombre": "Illapel",
+    "provincia_id": 11
+  },
+  {
+    "id": 32,
+    "nombre": "Los Vilos",
+    "provincia_id": 11
+  },
+  {
+    "id": 33,
+    "nombre": "Salamanca",
+    "provincia_id": 11
+  },
+  {
+    "id": 34,
+    "nombre": "Andacollo",
+    "provincia_id": 12
+  },
+  {
+    "id": 35,
+    "nombre": "Coquimbo",
+    "provincia_id": 12
+  },
+  {
+    "id": 36,
+    "nombre": "La Higuera",
+    "provincia_id": 12
+  },
+  {
+    "id": 37,
+    "nombre": "La Serena",
+    "provincia_id": 12
+  },
+  {
+    "id": 38,
+    "nombre": "Paiguano",
+    "provincia_id": 12
+  },
+  {
+    "id": 39,
+    "nombre": "Vicuña",
+    "provincia_id": 12
+  },
+  {
+    "id": 40,
+    "nombre": "Combarbalá",
+    "provincia_id": 13
+  },
+  {
+    "id": 41,
+    "nombre": "Monte Patria",
+    "provincia_id": 13
+  },
+  {
+    "id": 42,
+    "nombre": "Ovalle",
+    "provincia_id": 13
+  },
+  {
+    "id": 43,
+    "nombre": "Punitaqui",
+    "provincia_id": 13
+  },
+  {
+    "id": 44,
+    "nombre": "Río Hurtado",
+    "provincia_id": 13
+  },
+  {
+    "id": 45,
+    "nombre": "Isla de Pascua",
+    "provincia_id": 14
+  },
+  {
+    "id": 46,
+    "nombre": "Calle Larga",
+    "provincia_id": 15
+  },
+  {
+    "id": 47,
+    "nombre": "Los Andes",
+    "provincia_id": 15
+  },
+  {
+    "id": 48,
+    "nombre": "Rinconada",
+    "provincia_id": 15
+  },
+  {
+    "id": 49,
+    "nombre": "San Esteban",
+    "provincia_id": 15
+  },
+  {
+    "id": 50,
+    "nombre": "Limache",
+    "provincia_id": 16
+  },
+  {
+    "id": 51,
+    "nombre": "Olmué",
+    "provincia_id": 16
+  },
+  {
+    "id": 52,
+    "nombre": "Quilpué",
+    "provincia_id": 16
+  },
+  {
+    "id": 53,
+    "nombre": "Villa Alemana",
+    "provincia_id": 16
+  },
+  {
+    "id": 54,
+    "nombre": "Cabildo",
+    "provincia_id": 17
+  },
+  {
+    "id": 55,
+    "nombre": "La Ligua",
+    "provincia_id": 17
+  },
+  {
+    "id": 56,
+    "nombre": "Papudo",
+    "provincia_id": 17
+  },
+  {
+    "id": 57,
+    "nombre": "Petorca",
+    "provincia_id": 17
+  },
+  {
+    "id": 58,
+    "nombre": "Zapallar",
+    "provincia_id": 17
+  },
+  {
+    "id": 59,
+    "nombre": "Calera",
+    "provincia_id": 18
+  },
+  {
+    "id": 60,
+    "nombre": "Hijuelas",
+    "provincia_id": 18
+  },
+  {
+    "id": 61,
+    "nombre": "La Cruz",
+    "provincia_id": 18
+  },
+  {
+    "id": 62,
+    "nombre": "Nogales",
+    "provincia_id": 18
+  },
+  {
+    "id": 63,
+    "nombre": "Quillota",
+    "provincia_id": 18
+  },
+  {
+    "id": 64,
+    "nombre": "Algarrobo",
+    "provincia_id": 19
+  },
+  {
+    "id": 65,
+    "nombre": "Cartagena",
+    "provincia_id": 19
+  },
+  {
+    "id": 66,
+    "nombre": "El Quisco",
+    "provincia_id": 19
+  },
+  {
+    "id": 67,
+    "nombre": "El Tabo",
+    "provincia_id": 19
+  },
+  {
+    "id": 68,
+    "nombre": "San Antonio",
+    "provincia_id": 19
+  },
+  {
+    "id": 69,
+    "nombre": "Santo Domingo",
+    "provincia_id": 19
+  },
+  {
+    "id": 70,
+    "nombre": "Catemu",
+    "provincia_id": 20
+  },
+  {
+    "id": 71,
+    "nombre": "Llaillay",
+    "provincia_id": 20
+  },
+  {
+    "id": 72,
+    "nombre": "Panquehue",
+    "provincia_id": 20
+  },
+  {
+    "id": 73,
+    "nombre": "Putaendo",
+    "provincia_id": 20
+  },
+  {
+    "id": 74,
+    "nombre": "San Felipe",
+    "provincia_id": 20
+  },
+  {
+    "id": 75,
+    "nombre": "Santa María",
+    "provincia_id": 20
+  },
+  {
+    "id": 76,
+    "nombre": "Casablanca",
+    "provincia_id": 21
+  },
+  {
+    "id": 77,
+    "nombre": "Concón",
+    "provincia_id": 21
+  },
+  {
+    "id": 78,
+    "nombre": "Juan Fernández",
+    "provincia_id": 21
+  },
+  {
+    "id": 79,
+    "nombre": "Puchuncaví",
+    "provincia_id": 21
+  },
+  {
+    "id": 80,
+    "nombre": "Quintero",
+    "provincia_id": 21
+  },
+  {
+    "id": 81,
+    "nombre": "Valparaíso",
+    "provincia_id": 21
+  },
+  {
+    "id": 82,
+    "nombre": "Viña del Mar",
+    "provincia_id": 21
+  },
+  {
+    "id": 83,
+    "nombre": "Colina",
+    "provincia_id": 22
+  },
+  {
+    "id": 84,
+    "nombre": "Lampa",
+    "provincia_id": 22
+  },
+  {
+    "id": 85,
+    "nombre": "Tiltil",
+    "provincia_id": 22
+  },
+  {
+    "id": 86,
+    "nombre": "Pirque",
+    "provincia_id": 23
+  },
+  {
+    "id": 87,
+    "nombre": "Puente Alto",
+    "provincia_id": 23
+  },
+  {
+    "id": 88,
+    "nombre": "San José de Maipo",
+    "provincia_id": 23
+  },
+  {
+    "id": 89,
+    "nombre": "Buin",
+    "provincia_id": 24
+  },
+  {
+    "id": 90,
+    "nombre": "Calera de Tango",
+    "provincia_id": 24
+  },
+  {
+    "id": 91,
+    "nombre": "Paine",
+    "provincia_id": 24
+  },
+  {
+    "id": 92,
+    "nombre": "San Bernardo",
+    "provincia_id": 24
+  },
+  {
+    "id": 93,
+    "nombre": "Alhué",
+    "provincia_id": 25
+  },
+  {
+    "id": 94,
+    "nombre": "Curacaví",
+    "provincia_id": 25
+  },
+  {
+    "id": 95,
+    "nombre": "María Pinto",
+    "provincia_id": 25
+  },
+  {
+    "id": 96,
+    "nombre": "Melipilla",
+    "provincia_id": 25
+  },
+  {
+    "id": 97,
+    "nombre": "San Pedro",
+    "provincia_id": 25
+  },
+  {
+    "id": 98,
+    "nombre": "Cerrillos",
+    "provincia_id": 26
+  },
+  {
+    "id": 99,
+    "nombre": "Cerro Navia",
+    "provincia_id": 26
+  },
+  {
+    "id": 100,
+    "nombre": "Conchalí",
+    "provincia_id": 26
+  },
+  {
+    "id": 101,
+    "nombre": "El Bosque",
+    "provincia_id": 26
+  },
+  {
+    "id": 102,
+    "nombre": "Estación Central",
+    "provincia_id": 26
+  },
+  {
+    "id": 103,
+    "nombre": "Huechuraba",
+    "provincia_id": 26
+  },
+  {
+    "id": 104,
+    "nombre": "Independencia",
+    "provincia_id": 26
+  },
+  {
+    "id": 105,
+    "nombre": "La Cisterna",
+    "provincia_id": 26
+  },
+  {
+    "id": 106,
+    "nombre": "La Florida",
+    "provincia_id": 26
+  },
+  {
+    "id": 107,
+    "nombre": "La Granja",
+    "provincia_id": 26
+  },
+  {
+    "id": 108,
+    "nombre": "La Pintana",
+    "provincia_id": 26
+  },
+  {
+    "id": 109,
+    "nombre": "La Reina",
+    "provincia_id": 26
+  },
+  {
+    "id": 110,
+    "nombre": "Las Condes",
+    "provincia_id": 26
+  },
+  {
+    "id": 111,
+    "nombre": "Lo Barnechea",
+    "provincia_id": 26
+  },
+  {
+    "id": 112,
+    "nombre": "Lo Espejo",
+    "provincia_id": 26
+  },
+  {
+    "id": 113,
+    "nombre": "Lo Prado",
+    "provincia_id": 26
+  },
+  {
+    "id": 114,
+    "nombre": "Macul",
+    "provincia_id": 26
+  },
+  {
+    "id": 115,
+    "nombre": "Maipú",
+    "provincia_id": 26
+  },
+  {
+    "id": 116,
+    "nombre": "Ñuñoa",
+    "provincia_id": 26
+  },
+  {
+    "id": 117,
+    "nombre": "Pedro Aguirre Cerda",
+    "provincia_id": 26
+  },
+  {
+    "id": 118,
+    "nombre": "Peñalolén",
+    "provincia_id": 26
+  },
+  {
+    "id": 119,
+    "nombre": "Providencia",
+    "provincia_id": 26
+  },
+  {
+    "id": 120,
+    "nombre": "Pudahuel",
+    "provincia_id": 26
+  },
+  {
+    "id": 121,
+    "nombre": "Quilicura",
+    "provincia_id": 26
+  },
+  {
+    "id": 122,
+    "nombre": "Quinta Normal",
+    "provincia_id": 26
+  },
+  {
+    "id": 123,
+    "nombre": "Recoleta",
+    "provincia_id": 26
+  },
+  {
+    "id": 124,
+    "nombre": "Renca",
+    "provincia_id": 26
+  },
+  {
+    "id": 125,
+    "nombre": "San Joaquín",
+    "provincia_id": 26
+  },
+  {
+    "id": 126,
+    "nombre": "San Miguel",
+    "provincia_id": 26
+  },
+  {
+    "id": 127,
+    "nombre": "San Ramón",
+    "provincia_id": 26
+  },
+  {
+    "id": 128,
+    "nombre": "Santiago Centro",
+    "provincia_id": 26
+  },
+  {
+    "id": 129,
+    "nombre": "Vitacura",
+    "provincia_id": 26
+  },
+  {
+    "id": 130,
+    "nombre": "El Monte",
+    "provincia_id": 27
+  },
+  {
+    "id": 131,
+    "nombre": "Isla de Maipo",
+    "provincia_id": 27
+  },
+  {
+    "id": 132,
+    "nombre": "Padre Hurtado",
+    "provincia_id": 27
+  },
+  {
+    "id": 133,
+    "nombre": "Peñaflor",
+    "provincia_id": 27
+  },
+  {
+    "id": 134,
+    "nombre": "Talagante",
+    "provincia_id": 27
+  },
+  {
+    "id": 135,
+    "nombre": "Codegua",
+    "provincia_id": 28
+  },
+  {
+    "id": 136,
+    "nombre": "Coinco",
+    "provincia_id": 28
+  },
+  {
+    "id": 137,
+    "nombre": "Coltauco",
+    "provincia_id": 28
+  },
+  {
+    "id": 138,
+    "nombre": "Doñihue",
+    "provincia_id": 28
+  },
+  {
+    "id": 139,
+    "nombre": "Graneros",
+    "provincia_id": 28
+  },
+  {
+    "id": 140,
+    "nombre": "Las Cabras",
+    "provincia_id": 28
+  },
+  {
+    "id": 141,
+    "nombre": "Machalí",
+    "provincia_id": 28
+  },
+  {
+    "id": 142,
+    "nombre": "Malloa",
+    "provincia_id": 28
+  },
+  {
+    "id": 143,
+    "nombre": "Mostazal",
+    "provincia_id": 28
+  },
+  {
+    "id": 144,
+    "nombre": "Olivar",
+    "provincia_id": 28
+  },
+  {
+    "id": 145,
+    "nombre": "Peumo",
+    "provincia_id": 28
+  },
+  {
+    "id": 146,
+    "nombre": "Pichidegua",
+    "provincia_id": 28
+  },
+  {
+    "id": 147,
+    "nombre": "Quinta de Tilcoco",
+    "provincia_id": 28
+  },
+  {
+    "id": 148,
+    "nombre": "Rancagua",
+    "provincia_id": 28
+  },
+  {
+    "id": 149,
+    "nombre": "Rengo",
+    "provincia_id": 28
+  },
+  {
+    "id": 150,
+    "nombre": "Requínoa",
+    "provincia_id": 28
+  },
+  {
+    "id": 151,
+    "nombre": "San Vicente",
+    "provincia_id": 28
+  },
+  {
+    "id": 152,
+    "nombre": "La Estrella",
+    "provincia_id": 29
+  },
+  {
+    "id": 153,
+    "nombre": "Litueche",
+    "provincia_id": 29
+  },
+  {
+    "id": 154,
+    "nombre": "Marchihue",
+    "provincia_id": 29
+  },
+  {
+    "id": 155,
+    "nombre": "Navidad",
+    "provincia_id": 29
+  },
+  {
+    "id": 156,
+    "nombre": "Paredones",
+    "provincia_id": 29
+  },
+  {
+    "id": 157,
+    "nombre": "Pichilemu",
+    "provincia_id": 29
+  },
+  {
+    "id": 158,
+    "nombre": "Chépica",
+    "provincia_id": 30
+  },
+  {
+    "id": 159,
+    "nombre": "Chimbarongo",
+    "provincia_id": 30
+  },
+  {
+    "id": 160,
+    "nombre": "Lolol",
+    "provincia_id": 30
+  },
+  {
+    "id": 161,
+    "nombre": "Nancagua",
+    "provincia_id": 30
+  },
+  {
+    "id": 162,
+    "nombre": "Palmilla",
+    "provincia_id": 30
+  },
+  {
+    "id": 163,
+    "nombre": "Peralillo",
+    "provincia_id": 30
+  },
+  {
+    "id": 164,
+    "nombre": "Placilla",
+    "provincia_id": 30
+  },
+  {
+    "id": 165,
+    "nombre": "Pumanque",
+    "provincia_id": 30
+  },
+  {
+    "id": 166,
+    "nombre": "San Fernando",
+    "provincia_id": 30
+  },
+  {
+    "id": 167,
+    "nombre": "Santa Cruz",
+    "provincia_id": 30
+  },
+  {
+    "id": 168,
+    "nombre": "Cauquenes",
+    "provincia_id": 31
+  },
+  {
+    "id": 169,
+    "nombre": "Chanco",
+    "provincia_id": 31
+  },
+  {
+    "id": 170,
+    "nombre": "Pelluhue",
+    "provincia_id": 31
+  },
+  {
+    "id": 171,
+    "nombre": "Curicó",
+    "provincia_id": 32
+  },
+  {
+    "id": 172,
+    "nombre": "Hualañé",
+    "provincia_id": 32
+  },
+  {
+    "id": 173,
+    "nombre": "Licantén",
+    "provincia_id": 32
+  },
+  {
+    "id": 174,
+    "nombre": "Molina",
+    "provincia_id": 32
+  },
+  {
+    "id": 175,
+    "nombre": "Rauco",
+    "provincia_id": 32
+  },
+  {
+    "id": 176,
+    "nombre": "Romeral",
+    "provincia_id": 32
+  },
+  {
+    "id": 177,
+    "nombre": "Sagrada Familia",
+    "provincia_id": 32
+  },
+  {
+    "id": 178,
+    "nombre": "Teno",
+    "provincia_id": 32
+  },
+  {
+    "id": 179,
+    "nombre": "Vichuquén",
+    "provincia_id": 32
+  },
+  {
+    "id": 180,
+    "nombre": "Colbún",
+    "provincia_id": 33
+  },
+  {
+    "id": 181,
+    "nombre": "Linares",
+    "provincia_id": 33
+  },
+  {
+    "id": 182,
+    "nombre": "Longaví",
+    "provincia_id": 33
+  },
+  {
+    "id": 183,
+    "nombre": "Parral",
+    "provincia_id": 33
+  },
+  {
+    "id": 184,
+    "nombre": "Retiro",
+    "provincia_id": 33
+  },
+  {
+    "id": 185,
+    "nombre": "San Javier",
+    "provincia_id": 33
+  },
+  {
+    "id": 186,
+    "nombre": "Villa Alegre",
+    "provincia_id": 33
+  },
+  {
+    "id": 187,
+    "nombre": "Yerbas Buenas",
+    "provincia_id": 33
+  },
+  {
+    "id": 188,
+    "nombre": "Constitución",
+    "provincia_id": 34
+  },
+  {
+    "id": 189,
+    "nombre": "Curepto",
+    "provincia_id": 34
+  },
+  {
+    "id": 190,
+    "nombre": "Empedrado",
+    "provincia_id": 34
+  },
+  {
+    "id": 191,
+    "nombre": "Maule",
+    "provincia_id": 34
+  },
+  {
+    "id": 192,
+    "nombre": "Pelarco",
+    "provincia_id": 34
+  },
+  {
+    "id": 193,
+    "nombre": "Pencahue",
+    "provincia_id": 34
+  },
+  {
+    "id": 194,
+    "nombre": "Río Claro",
+    "provincia_id": 34
+  },
+  {
+    "id": 195,
+    "nombre": "San Clemente",
+    "provincia_id": 34
+  },
+  {
+    "id": 196,
+    "nombre": "San Rafael",
+    "provincia_id": 34
+  },
+  {
+    "id": 197,
+    "nombre": "Talca",
+    "provincia_id": 34
+  },
+  {
+    "id": 198,
+    "nombre": "Arauco",
+    "provincia_id": 35
+  },
+  {
+    "id": 199,
+    "nombre": "Cañete",
+    "provincia_id": 35
+  },
+  {
+    "id": 200,
+    "nombre": "Contulmo",
+    "provincia_id": 35
+  },
+  {
+    "id": 201,
+    "nombre": "Curanilahue",
+    "provincia_id": 35
+  },
+  {
+    "id": 202,
+    "nombre": "Lebu",
+    "provincia_id": 35
+  },
+  {
+    "id": 203,
+    "nombre": "Los Álamos",
+    "provincia_id": 35
+  },
+  {
+    "id": 204,
+    "nombre": "Tirúa",
+    "provincia_id": 35
+  },
+  {
+    "id": 205,
+    "nombre": "Alto Biobío",
+    "provincia_id": 36
+  },
+  {
+    "id": 206,
+    "nombre": "Antuco",
+    "provincia_id": 36
+  },
+  {
+    "id": 207,
+    "nombre": "Cabrero",
+    "provincia_id": 36
+  },
+  {
+    "id": 208,
+    "nombre": "Laja",
+    "provincia_id": 36
+  },
+  {
+    "id": 209,
+    "nombre": "Los Ángeles",
+    "provincia_id": 36
+  },
+  {
+    "id": 210,
+    "nombre": "Mulchén",
+    "provincia_id": 36
+  },
+  {
+    "id": 211,
+    "nombre": "Nacimiento",
+    "provincia_id": 36
+  },
+  {
+    "id": 212,
+    "nombre": "Negrete",
+    "provincia_id": 36
+  },
+  {
+    "id": 213,
+    "nombre": "Quilaco",
+    "provincia_id": 36
+  },
+  {
+    "id": 214,
+    "nombre": "Quilleco",
+    "provincia_id": 36
+  },
+  {
+    "id": 215,
+    "nombre": "San Rosendo",
+    "provincia_id": 36
+  },
+  {
+    "id": 216,
+    "nombre": "Santa Bárbara",
+    "provincia_id": 36
+  },
+  {
+    "id": 217,
+    "nombre": "Tucapel",
+    "provincia_id": 36
+  },
+  {
+    "id": 218,
+    "nombre": "Yumbel",
+    "provincia_id": 36
+  },
+  {
+    "id": 219,
+    "nombre": "Chiguayante",
+    "provincia_id": 37
+  },
+  {
+    "id": 220,
+    "nombre": "Concepción",
+    "provincia_id": 37
+  },
+  {
+    "id": 221,
+    "nombre": "Coronel",
+    "provincia_id": 37
+  },
+  {
+    "id": 222,
+    "nombre": "Florida",
+    "provincia_id": 37
+  },
+  {
+    "id": 223,
+    "nombre": "Hualpén",
+    "provincia_id": 37
+  },
+  {
+    "id": 224,
+    "nombre": "Hualqui",
+    "provincia_id": 37
+  },
+  {
+    "id": 225,
+    "nombre": "Lota",
+    "provincia_id": 37
+  },
+  {
+    "id": 226,
+    "nombre": "Penco",
+    "provincia_id": 37
+  },
+  {
+    "id": 227,
+    "nombre": "San Pedro de la Paz",
+    "provincia_id": 37
+  },
+  {
+    "id": 228,
+    "nombre": "Santa Juana",
+    "provincia_id": 37
+  },
+  {
+    "id": 229,
+    "nombre": "Talcahuano",
+    "provincia_id": 37
+  },
+  {
+    "id": 230,
+    "nombre": "Tomé",
+    "provincia_id": 37
+  },
+  {
+    "id": 231,
+    "nombre": "Carahue",
+    "provincia_id": 38
+  },
+  {
+    "id": 232,
+    "nombre": "Cholchol",
+    "provincia_id": 38
+  },
+  {
+    "id": 233,
+    "nombre": "Cunco",
+    "provincia_id": 38
+  },
+  {
+    "id": 234,
+    "nombre": "Curarrehue",
+    "provincia_id": 38
+  },
+  {
+    "id": 235,
+    "nombre": "Freire",
+    "provincia_id": 38
+  },
+  {
+    "id": 236,
+    "nombre": "Galvarino",
+    "provincia_id": 38
+  },
+  {
+    "id": 237,
+    "nombre": "Gorbea",
+    "provincia_id": 38
+  },
+  {
+    "id": 238,
+    "nombre": "Lautaro",
+    "provincia_id": 38
+  },
+  {
+    "id": 239,
+    "nombre": "Loncoche",
+    "provincia_id": 38
+  },
+  {
+    "id": 240,
+    "nombre": "Melipeuco",
+    "provincia_id": 38
+  },
+  {
+    "id": 241,
+    "nombre": "Nueva Imperial",
+    "provincia_id": 38
+  },
+  {
+    "id": 242,
+    "nombre": "Padre las Casas",
+    "provincia_id": 38
+  },
+  {
+    "id": 243,
+    "nombre": "Perquenco",
+    "provincia_id": 38
+  },
+  {
+    "id": 244,
+    "nombre": "Pitrufquén",
+    "provincia_id": 38
+  },
+  {
+    "id": 245,
+    "nombre": "Pucón",
+    "provincia_id": 38
+  },
+  {
+    "id": 246,
+    "nombre": "Saavedra",
+    "provincia_id": 38
+  },
+  {
+    "id": 247,
+    "nombre": "Temuco",
+    "provincia_id": 38
+  },
+  {
+    "id": 248,
+    "nombre": "Teodoro Schmidt",
+    "provincia_id": 38
+  },
+  {
+    "id": 249,
+    "nombre": "Toltén",
+    "provincia_id": 38
+  },
+  {
+    "id": 250,
+    "nombre": "Vilcún",
+    "provincia_id": 38
+  },
+  {
+    "id": 251,
+    "nombre": "Villarrica",
+    "provincia_id": 38
+  },
+  {
+    "id": 252,
+    "nombre": "Angol",
+    "provincia_id": 39
+  },
+  {
+    "id": 253,
+    "nombre": "Collipulli",
+    "provincia_id": 39
+  },
+  {
+    "id": 254,
+    "nombre": "Curacautín",
+    "provincia_id": 39
+  },
+  {
+    "id": 255,
+    "nombre": "Ercilla",
+    "provincia_id": 39
+  },
+  {
+    "id": 256,
+    "nombre": "Lonquimay",
+    "provincia_id": 39
+  },
+  {
+    "id": 257,
+    "nombre": "Los Sauces",
+    "provincia_id": 39
+  },
+  {
+    "id": 258,
+    "nombre": "Lumaco",
+    "provincia_id": 39
+  },
+  {
+    "id": 259,
+    "nombre": "Purén",
+    "provincia_id": 39
+  },
+  {
+    "id": 260,
+    "nombre": "Renaico",
+    "provincia_id": 39
+  },
+  {
+    "id": 261,
+    "nombre": "Traiguén",
+    "provincia_id": 39
+  },
+  {
+    "id": 262,
+    "nombre": "Victoria",
+    "provincia_id": 39
+  },
+  {
+    "id": 263,
+    "nombre": "Futrono",
+    "provincia_id": 40
+  },
+  {
+    "id": 264,
+    "nombre": "La Unión",
+    "provincia_id": 40
+  },
+  {
+    "id": 265,
+    "nombre": "Lago Ranco",
+    "provincia_id": 40
+  },
+  {
+    "id": 266,
+    "nombre": "Río Bueno",
+    "provincia_id": 40
+  },
+  {
+    "id": 267,
+    "nombre": "Corral",
+    "provincia_id": 41
+  },
+  {
+    "id": 268,
+    "nombre": "Lanco",
+    "provincia_id": 41
+  },
+  {
+    "id": 269,
+    "nombre": "Los Lagos",
+    "provincia_id": 41
+  },
+  {
+    "id": 270,
+    "nombre": "Máfil",
+    "provincia_id": 41
+  },
+  {
+    "id": 271,
+    "nombre": "Mariquina",
+    "provincia_id": 41
+  },
+  {
+    "id": 272,
+    "nombre": "Paillaco",
+    "provincia_id": 41
+  },
+  {
+    "id": 273,
+    "nombre": "Panguipulli",
+    "provincia_id": 41
+  },
+  {
+    "id": 274,
+    "nombre": "Valdivia",
+    "provincia_id": 41
+  },
+  {
+    "id": 275,
+    "nombre": "Ancud",
+    "provincia_id": 42
+  },
+  {
+    "id": 276,
+    "nombre": "Castro",
+    "provincia_id": 42
+  },
+  {
+    "id": 277,
+    "nombre": "Chonchi",
+    "provincia_id": 42
+  },
+  {
+    "id": 278,
+    "nombre": "Curaco de Vélez",
+    "provincia_id": 42
+  },
+  {
+    "id": 279,
+    "nombre": "Dalcahue",
+    "provincia_id": 42
+  },
+  {
+    "id": 280,
+    "nombre": "Puqueldón",
+    "provincia_id": 42
+  },
+  {
+    "id": 281,
+    "nombre": "Queilén",
+    "provincia_id": 42
+  },
+  {
+    "id": 282,
+    "nombre": "Quellón",
+    "provincia_id": 42
+  },
+  {
+    "id": 283,
+    "nombre": "Quemchi",
+    "provincia_id": 42
+  },
+  {
+    "id": 284,
+    "nombre": "Quinchao",
+    "provincia_id": 42
+  },
+  {
+    "id": 285,
+    "nombre": "Calbuco",
+    "provincia_id": 43
+  },
+  {
+    "id": 286,
+    "nombre": "Cochamó",
+    "provincia_id": 43
+  },
+  {
+    "id": 287,
+    "nombre": "Fresia",
+    "provincia_id": 43
+  },
+  {
+    "id": 288,
+    "nombre": "Frutillar",
+    "provincia_id": 43
+  },
+  {
+    "id": 289,
+    "nombre": "Llanquihue",
+    "provincia_id": 43
+  },
+  {
+    "id": 290,
+    "nombre": "Los Muermos",
+    "provincia_id": 43
+  },
+  {
+    "id": 291,
+    "nombre": "Maullín",
+    "provincia_id": 43
+  },
+  {
+    "id": 292,
+    "nombre": "Puerto Montt",
+    "provincia_id": 43
+  },
+  {
+    "id": 293,
+    "nombre": "Puerto Varas",
+    "provincia_id": 43
+  },
+  {
+    "id": 294,
+    "nombre": "Osorno",
+    "provincia_id": 44
+  },
+  {
+    "id": 295,
+    "nombre": "Puerto Octay",
+    "provincia_id": 44
+  },
+  {
+    "id": 296,
+    "nombre": "Purranque",
+    "provincia_id": 44
+  },
+  {
+    "id": 297,
+    "nombre": "Puyehue",
+    "provincia_id": 44
+  },
+  {
+    "id": 298,
+    "nombre": "Río Negro",
+    "provincia_id": 44
+  },
+  {
+    "id": 299,
+    "nombre": "San Juan de la Costa",
+    "provincia_id": 44
+  },
+  {
+    "id": 300,
+    "nombre": "San Pablo",
+    "provincia_id": 44
+  },
+  {
+    "id": 301,
+    "nombre": "Chaitén",
+    "provincia_id": 45
+  },
+  {
+    "id": 302,
+    "nombre": "Futaleufú",
+    "provincia_id": 45
+  },
+  {
+    "id": 303,
+    "nombre": "Hualaihué",
+    "provincia_id": 45
+  },
+  {
+    "id": 304,
+    "nombre": "Palena",
+    "provincia_id": 45
+  },
+  {
+    "id": 305,
+    "nombre": "Aysén",
+    "provincia_id": 46
+  },
+  {
+    "id": 306,
+    "nombre": "Cisnes",
+    "provincia_id": 46
+  },
+  {
+    "id": 307,
+    "nombre": "Guaitecas",
+    "provincia_id": 46
+  },
+  {
+    "id": 308,
+    "nombre": "Cochrane",
+    "provincia_id": 47
+  },
+  {
+    "id": 309,
+    "nombre": "O’Higgins",
+    "provincia_id": 47
+  },
+  {
+    "id": 310,
+    "nombre": "Tortel",
+    "provincia_id": 47
+  },
+  {
+    "id": 311,
+    "nombre": "Coihaique",
+    "provincia_id": 48
+  },
+  {
+    "id": 312,
+    "nombre": "Lago Verde",
+    "provincia_id": 48
+  },
+  {
+    "id": 313,
+    "nombre": "Chile Chico",
+    "provincia_id": 49
+  },
+  {
+    "id": 314,
+    "nombre": "Río Ibáñez",
+    "provincia_id": 49
+  },
+  {
+    "id": 315,
+    "nombre": "Antártica",
+    "provincia_id": 50
+  },
+  {
+    "id": 316,
+    "nombre": "Cabo de Hornos",
+    "provincia_id": 50
+  },
+  {
+    "id": 317,
+    "nombre": "Laguna Blanca",
+    "provincia_id": 51
+  },
+  {
+    "id": 318,
+    "nombre": "Punta Arenas",
+    "provincia_id": 51
+  },
+  {
+    "id": 319,
+    "nombre": "Río Verde",
+    "provincia_id": 51
+  },
+  {
+    "id": 320,
+    "nombre": "San Gregorio",
+    "provincia_id": 51
+  },
+  {
+    "id": 321,
+    "nombre": "Porvenir",
+    "provincia_id": 52
+  },
+  {
+    "id": 322,
+    "nombre": "Primavera",
+    "provincia_id": 52
+  },
+  {
+    "id": 323,
+    "nombre": "Timaukel",
+    "provincia_id": 52
+  },
+  {
+    "id": 324,
+    "nombre": "Natales",
+    "provincia_id": 53
+  },
+  {
+    "id": 325,
+    "nombre": "Torres del Paine",
+    "provincia_id": 53
+  },
+  {
+    "id": 326,
+    "nombre": "Bulnes",
+    "provincia_id": 54
+  },
+  {
+    "id": 327,
+    "nombre": "Chillán",
+    "provincia_id": 54
+  },
+  {
+    "id": 328,
+    "nombre": "Chillán Viejo",
+    "provincia_id": 54
+  },
+  {
+    "id": 329,
+    "nombre": "El Carmen",
+    "provincia_id": 54
+  },
+  {
+    "id": 330,
+    "nombre": "Pemuco",
+    "provincia_id": 54
+  },
+  {
+    "id": 331,
+    "nombre": "Pinto",
+    "provincia_id": 54
+  },
+  {
+    "id": 332,
+    "nombre": "Quillón",
+    "provincia_id": 54
+  },
+  {
+    "id": 333,
+    "nombre": "San Ignacio",
+    "provincia_id": 54
+  },
+  {
+    "id": 334,
+    "nombre": "Yungay",
+    "provincia_id": 54
+  },
+  {
+    "id": 335,
+    "nombre": "Cobquecura",
+    "provincia_id": 55
+  },
+  {
+    "id": 336,
+    "nombre": "Coelemu",
+    "provincia_id": 55
+  },
+  {
+    "id": 337,
+    "nombre": "Ninhue",
+    "provincia_id": 55
+  },
+  {
+    "id": 338,
+    "nombre": "Portezuelo",
+    "provincia_id": 55
+  },
+  {
+    "id": 339,
+    "nombre": "Quirihue",
+    "provincia_id": 55
+  },
+  {
+    "id": 340,
+    "nombre": "Ránquil",
+    "provincia_id": 55
+  },
+  {
+    "id": 341,
+    "nombre": "Treguaco",
+    "provincia_id": 55
+  },
+  {
+    "id": 342,
+    "nombre": "Coihueco",
+    "provincia_id": 56
+  },
+  {
+    "id": 343,
+    "nombre": "Ñiquén",
+    "provincia_id": 56
+  },
+  {
+    "id": 344,
+    "nombre": "San Carlos",
+    "provincia_id": 56
+  },
+  {
+    "id": 345,
+    "nombre": "San Fabián",
+    "provincia_id": 56
+  },
+  {
+    "id": 346,
+    "nombre": "San Nicolás",
+    "provincia_id": 56
+  }
+]

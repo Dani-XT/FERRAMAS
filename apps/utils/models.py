@@ -1,17 +1,5 @@
 from django.db import models
 
-class Funciones(models.Model):
-    codename = models.CharField(max_length=150)
-    name = models.CharField(max_length=150)
-    description = models.TextField()
-    app = models.CharField(max_length=254)
-
-    def __str__(self):
-        return self.name
-    
-class Utils(models.Model):
-    valor_uf = models.FloatField()
-
 
 class GrupoValor(models.Model):
     nombre = models.CharField(max_length=150, unique=True)

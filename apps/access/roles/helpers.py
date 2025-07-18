@@ -25,8 +25,6 @@ def get_grupo_detail(pk):
         "id": grupo.id,
         "nombre": grupo.name,
         "descripcion": desc_grupo.descripcion,
-        "bg_color": desc_grupo.bg_color,
-        "icono": desc_grupo.icono,
         "date_created": desc_grupo.date_created,
     }
 
@@ -43,8 +41,6 @@ def get_all_grupos():
             "id": grupo.id,
             "nombre": grupo.name,
             "descripcion": desc_grupo.descripcion,
-            "bg_color": desc_grupo.bg_color,
-            "icono": desc_grupo.icono,
             "date_created": desc_grupo.date_created,
             "usuarios": usuarios,
             "total": usuarios.count()

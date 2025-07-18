@@ -1,0 +1,338 @@
+[
+  {
+    "id": 1,
+    "nombre": "Arica",
+    "nombre_completo": "Provincia de Arica",
+    "region_id": 1
+  },
+  {
+    "id": 2,
+    "nombre": "Parinacota",
+    "nombre_completo": "Provincia de Parinacota",
+    "region_id": 1
+  },
+  {
+    "id": 3,
+    "nombre": "Iquique",
+    "nombre_completo": "Provincia de Iquique",
+    "region_id": 2
+  },
+  {
+    "id": 4,
+    "nombre": "Tamarugal",
+    "nombre_completo": "Provincia del Tamarugal",
+    "region_id": 2
+  },
+  {
+    "id": 5,
+    "nombre": "Antofagasta",
+    "nombre_completo": "Provincia de Antofagasta",
+    "region_id": 3
+  },
+  {
+    "id": 6,
+    "nombre": "El Loa",
+    "nombre_completo": "Provincia de El Loa",
+    "region_id": 3
+  },
+  {
+    "id": 7,
+    "nombre": "Tocopilla",
+    "nombre_completo": "Provincia de Tocopilla",
+    "region_id": 3
+  },
+  {
+    "id": 8,
+    "nombre": "Chañaral",
+    "nombre_completo": "Provincia de Chañaral",
+    "region_id": 4
+  },
+  {
+    "id": 9,
+    "nombre": "Copiapó",
+    "nombre_completo": "Provincia de Copiapó",
+    "region_id": 4
+  },
+  {
+    "id": 10,
+    "nombre": "Huasco",
+    "nombre_completo": "Provincia de Huasco",
+    "region_id": 4
+  },
+  {
+    "id": 11,
+    "nombre": "Choapa",
+    "nombre_completo": "Provincia de Choapa",
+    "region_id": 5
+  },
+  {
+    "id": 12,
+    "nombre": "Elqui",
+    "nombre_completo": "Provincia de Elqui",
+    "region_id": 5
+  },
+  {
+    "id": 13,
+    "nombre": "Limarí",
+    "nombre_completo": "Provincia de Limarí",
+    "region_id": 5
+  },
+  {
+    "id": 14,
+    "nombre": "Isla de Pascua",
+    "nombre_completo": "Provincia de Isla de Pascua",
+    "region_id": 6
+  },
+  {
+    "id": 15,
+    "nombre": "Los Andes",
+    "nombre_completo": "Provincia de Los Andes",
+    "region_id": 6
+  },
+  {
+    "id": 16,
+    "nombre": "Marga Marga",
+    "nombre_completo": "Provincia de Marga Marga",
+    "region_id": 6
+  },
+  {
+    "id": 17,
+    "nombre": "Petorca",
+    "nombre_completo": "Provincia de Petorca",
+    "region_id": 6
+  },
+  {
+    "id": 18,
+    "nombre": "Quillota",
+    "nombre_completo": "Provincia de Quillota",
+    "region_id": 6
+  },
+  {
+    "id": 19,
+    "nombre": "San Antonio",
+    "nombre_completo": "Provincia de San Antonio",
+    "region_id": 6
+  },
+  {
+    "id": 20,
+    "nombre": "San Felipe de Aconcagua",
+    "nombre_completo": "Provincia de San Felipe de Aconcagua",
+    "region_id": 6
+  },
+  {
+    "id": 21,
+    "nombre": "Valparaíso",
+    "nombre_completo": "Provincia de Valparaíso",
+    "region_id": 6
+  },
+  {
+    "id": 22,
+    "nombre": "Chacabuco",
+    "nombre_completo": "Provincia de Chacabuco",
+    "region_id": 7
+  },
+  {
+    "id": 23,
+    "nombre": "Cordillera",
+    "nombre_completo": "Provincia de Cordillera",
+    "region_id": 7
+  },
+  {
+    "id": 24,
+    "nombre": "Maipo",
+    "nombre_completo": "Provincia de Maipo",
+    "region_id": 7
+  },
+  {
+    "id": 25,
+    "nombre": "Melipilla",
+    "nombre_completo": "Provincia de Melipilla",
+    "region_id": 7
+  },
+  {
+    "id": 26,
+    "nombre": "Santiago",
+    "nombre_completo": "Provincia de Santiago",
+    "region_id": 7
+  },
+  {
+    "id": 27,
+    "nombre": "Talagante",
+    "nombre_completo": "Provincia de Talagante",
+    "region_id": 7
+  },
+  {
+    "id": 28,
+    "nombre": "Cachapoal",
+    "nombre_completo": "Provincia de Cachapoal",
+    "region_id": 8
+  },
+  {
+    "id": 29,
+    "nombre": "Cardenal Caro",
+    "nombre_completo": "Provincia de Cardenal Caro",
+    "region_id": 8
+  },
+  {
+    "id": 30,
+    "nombre": "Colchagua",
+    "nombre_completo": "Provincia de Colchagua",
+    "region_id": 8
+  },
+  {
+    "id": 31,
+    "nombre": "Cauquenes",
+    "nombre_completo": "Provincia de Cauquenes",
+    "region_id": 9
+  },
+  {
+    "id": 32,
+    "nombre": "Curicó",
+    "nombre_completo": "Provincia de Curicó",
+    "region_id": 9
+  },
+  {
+    "id": 33,
+    "nombre": "Linares",
+    "nombre_completo": "Provincia de Linares",
+    "region_id": 9
+  },
+  {
+    "id": 34,
+    "nombre": "Talca",
+    "nombre_completo": "Provincia de Talca",
+    "region_id": 9
+  },
+  {
+    "id": 35,
+    "nombre": "Arauco",
+    "nombre_completo": "Provincia de Arauco",
+    "region_id": 10
+  },
+  {
+    "id": 36,
+    "nombre": "Biobío",
+    "nombre_completo": "Provincia de Bío-Bío",
+    "region_id": 10
+  },
+  {
+    "id": 37,
+    "nombre": "Concepción",
+    "nombre_completo": "Provincia de Concepción",
+    "region_id": 10
+  },
+  {
+    "id": 38,
+    "nombre": "Cautín",
+    "nombre_completo": "Provincia de Cautín",
+    "region_id": 11
+  },
+  {
+    "id": 39,
+    "nombre": "Malleco",
+    "nombre_completo": "Provincia de Malleco",
+    "region_id": 11
+  },
+  {
+    "id": 40,
+    "nombre": "Ranco",
+    "nombre_completo": "Provincia de Ranco",
+    "region_id": 12
+  },
+  {
+    "id": 41,
+    "nombre": "Valdivia",
+    "nombre_completo": "Provincia de Valdivia",
+    "region_id": 12
+  },
+  {
+    "id": 42,
+    "nombre": "Chiloé",
+    "nombre_completo": "Provincia de Chiloé",
+    "region_id": 13
+  },
+  {
+    "id": 43,
+    "nombre": "Llanquihue",
+    "nombre_completo": "Provincia de Llanquihue",
+    "region_id": 13
+  },
+  {
+    "id": 44,
+    "nombre": "Osorno",
+    "nombre_completo": "Provincia de Osorno",
+    "region_id": 13
+  },
+  {
+    "id": 45,
+    "nombre": "Palena",
+    "nombre_completo": "Provincia de Palena",
+    "region_id": 13
+  },
+  {
+    "id": 46,
+    "nombre": "Aysén",
+    "nombre_completo": "Provincia de Aysén",
+    "region_id": 14
+  },
+  {
+    "id": 47,
+    "nombre": "Capitán Prat",
+    "nombre_completo": "Provincia de Capitán Prat",
+    "region_id": 14
+  },
+  {
+    "id": 48,
+    "nombre": "Coihaique",
+    "nombre_completo": "Provincia de Coyhaique",
+    "region_id": 14
+  },
+  {
+    "id": 49,
+    "nombre": "General Carrera",
+    "nombre_completo": "Provincia de General Carrera",
+    "region_id": 14
+  },
+  {
+    "id": 50,
+    "nombre": "Antártica Chilena",
+    "nombre_completo": "Provincia de la Antártica Chilena",
+    "region_id": 15
+  },
+  {
+    "id": 51,
+    "nombre": "Magallanes",
+    "nombre_completo": "Provincia de Magallanes",
+    "region_id": 15
+  },
+  {
+    "id": 52,
+    "nombre": "Tierra del Fuego",
+    "nombre_completo": "Provincia de Tierra del Fuego",
+    "region_id": 15
+  },
+  {
+    "id": 53,
+    "nombre": "Última Esperanza",
+    "nombre_completo": "Provincia de Última Esperanza",
+    "region_id": 15
+  },
+  {
+    "id": 54,
+    "nombre": "Diguillín",
+    "nombre_completo": "Provincia de Diguillín",
+    "region_id": 16
+  },
+  {
+    "id": 55,
+    "nombre": "Itata",
+    "nombre_completo": "Provincia de Itata",
+    "region_id": 16
+  },
+  {
+    "id": 56,
+    "nombre": "Punilla",
+    "nombre_completo": "Provincia de Punilla",
+    "region_id": 16
+  }
+]
