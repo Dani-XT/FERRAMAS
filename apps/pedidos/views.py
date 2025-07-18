@@ -13,7 +13,7 @@ class PedidosView(PermissionRequiredMixin, TemplateView):
     permission_required = ("auth.view_user")
 
     def get_context_data(self, **kwargs):
-        context =  TemplateLayout.init(super().get_context_data(**kwargs))
+        context =  TemplateLayout.init(self, super().get_context_data(**kwargs))
         pedidos = get_all_pedidos()
         context.update(
             {

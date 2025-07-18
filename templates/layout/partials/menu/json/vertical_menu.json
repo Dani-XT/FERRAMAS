@@ -28,6 +28,18 @@
       "slug": "sistema"
     },
     {
+      "icon": "menu-icon tf-icons ri-database-2-line",
+      "name": "Pedidos",
+      "slug": "pedidos-list",
+      "url": "pedidos-list"
+    },
+    {
+      "icon": "menu-icon tf-icons ri-shopping-bag-3-line",
+      "name": "Ventas",
+      "slug": "ventas-list",
+      "url": "ventas-list"
+    },
+    {
       "icon": "menu-icon tf-icons ri-home-4-line",
       "name": "Bodega",
       "slug": "bodega-list",

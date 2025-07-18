@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'apps.contador',
     'apps.vendedor',
     'apps.pedidos',
+    'apps.ventas',
     # ----------------------------------------
     # AUTH Y SISTEMA
     # ----------------------------------------

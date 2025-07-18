@@ -12,6 +12,8 @@ urlpatterns = [
     path("admin/", include("apps.bodega.urls")),
     path("admin/", include("apps.contador.urls")),
     path("admin/", include("apps.vendedor.urls")),
+    path("admin/", include("apps.ventas.urls")),
+    path("admin/", include("apps.pedidos.urls")),
     # ----------------------------------------
     # Productos
     # ----------------------------------------
