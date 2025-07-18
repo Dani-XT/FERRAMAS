@@ -2,22 +2,19 @@ from django.utils.safestring import mark_safe
 from django import template
 from web_project.template_helpers.theme import TemplateHelper
 from django.contrib.auth.decorators import user_passes_test
+from django.urls import reverse, NoReverseMatch
 
 register = template.Library()
 
 
 # Register tags as an adapter for the Theme class usage in the HTML template
-
-
 @register.simple_tag
 def get_theme_variables(scope):
     return mark_safe(TemplateHelper.get_theme_variables(scope))
 
-
 @register.simple_tag
 def get_theme_config(scope):
     return mark_safe(TemplateHelper.get_theme_config(scope))
-
 
 @register.filter
 def filter_by_url(submenu, url):
@@ -34,6 +31,28 @@ def filter_by_url(submenu, url):
 
     return False
 
+@register.filter
+def format_porcentaje(value):
+    try:
+        value = float(value)
+        if value.is_integer():
+            return f"{int(value)}%"
+        return f"{value:.2f}%".replace(".", ",")
+    except:
+        return value
+
+@register.filter
+def moneda_chilena(value, prefix=True):
+    try:
+
+        value = round(float(value))
+        if prefix:
+            return "${:,.0f}".format(value).replace(",", ".")
+        else:
+            return "{:,.0f}".format(value).replace(",", ".")
+    except:
+        return value
+    
 
 # Check if the user has the group
 @register.filter
@@ -94,3 +113,24 @@ def current_url(request):
 @register.filter
 def split(value, key):
     return value.split(key)
+
+@register.simple_tag(takes_context=True)
+def nav_active(context, url_name, match_prefix=False):
+    request = context.get("request")
+    path = request.path
+    resolver_name = request.resolver_match.url_name if request.resolver_match else ""
+
+    if not url_name:
+        return ""
+
+    try:
+        resolved_url = reverse(url_name)
+        if path == resolved_url:
+            return "active"
+        if match_prefix and path.startswith(resolved_url):
+            return "active"
+    except NoReverseMatch:
+        if match_prefix and resolver_name.startswith(url_name):
+            return "active"
+
+    return ""

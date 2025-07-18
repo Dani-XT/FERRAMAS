@@ -10,7 +10,7 @@ from apps.productos.productos_delete.views import ProductosDeleteView
 
 urlpatterns = [
     path(
-        "productos/list/",
+        "productos/",
         login_required(ProductosView.as_view(template_name="productos_list.html")),
         name="productos-list",
     ),

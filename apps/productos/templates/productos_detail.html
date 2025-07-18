@@ -51,7 +51,167 @@
   </div>
 </div>
 
+<link rel="stylesheet" href="{% static 'vendor/css/pages/app-academy.css' %}" />
+<style>
+  .detalle-inmueble-img {
+    width: 100%;
+    max-height: 370px;
+    object-fit: cover;
+    border-radius: 2rem;
+    background: #f6f6f6;
+  }
+  .detalle-miniaturas img {
+    width: 110px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 1rem;
+    margin-right: 12px;
+    margin-bottom: 8px;
+    border: 2px solid transparent;
+    transition: border 0.2s;
+    cursor: pointer;
+  }
+  .detalle-miniaturas img:hover {
+    border: 2px solid #6c63ff;
+    box-shadow: 0 0 0.5rem #bbb;
+  }
+  .detalle-inmobiliaria-box {
+    background: #f5f7fa;
+    border-radius: 1.5rem;
+    padding: 2rem 2.5rem;
+    margin-top: 2.5rem;
+    box-shadow: 0 1px 7px rgba(110,120,190,0.05);
+  }
+  .detalle-inmobiliaria-box h5 {
+    font-weight: bold;
+    color: #4d5475;
+    margin-bottom: 0.5rem;
+  }
+  .detalle-inmobiliaria-info li {
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
+  }
+  .detalle-inmobiliaria-info i {
+    color: #36a3fc;
+    margin-right: 0.45rem;
+  }
+</style>
 
+
+
+<div class="container my-5">
+  <div class="row align-items-center">
+    <div class="col-md-7 mb-4 mb-md-0">
+      <div class="detalle-inmueble-titulo mb-3" style="font-size:2.5rem;font-weight:700;color:#474b54;">
+        {{ producto.nombre }}
+      </div>
+      <div class="detalle-inmueble-sub" style="font-size:1.25rem;color:#555;margin-bottom:1rem;">
+        {{ producto.inmobilaria.nombre }}{% if producto.ubicacion %} - {{ producto.ubicacion }}{% endif %}
+      </div>
+      <div class="detalle-inmueble-desc" style="font-size:1.1rem;margin-bottom:2rem;">
+        {{ producto.descripcion }}
+      </div>
+      <ul class="list-unstyled mb-4">
+        <li><strong>Precio:</strong> ${{ producto.precio|floatformat:"0" }}</li>
+        <li><strong>Metros²:</strong> {{ producto.metros_cuadrados }} m²</li>
+        <li><strong>Publicado:</strong> {{ producto.fecha_publicacion|date:"d/m/Y" }}</li>
+        {% if producto.latitud and producto.longitud %}
+        <li><strong>Coordenadas:</strong> {{ producto.latitud }}, {{ producto.longitud }}</li>
+        {% endif %}
+      </ul>
+      <div class="d-flex flex-wrap gap-2 mb-4">
+        <a href="#" class="btn btn-success btn-lg px-4">Cotizar Unidad</a>
+        <a href="#" class="btn btn-outline-secondary btn-lg px-4">Agendar Visita</a>
+        {% if puede_eliminar %}
+  <form action="{% url 'inmuebles-delete' producto.id %}" method="post" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-outline-danger btn-lg px-4"
+            onclick="return confirm('¿Seguro que quieres eliminar este inmueble?');">
+      <i class="ri-delete-bin-6-line"></i> Eliminar Inmueble
+    </button>
+  </form>
+{% endif %}
+{% if puede_eliminar %}
+    <!-- ...Botón eliminar... -->
+    <a href="{% url 'inmuebles-edit' producto.id %}" class="btn btn-outline-warning btn-lg px-4 ms-2">
+        <i class="ri-edit-box-line"></i> Editar Inmueble
+    </a>
+{% endif %}
+
+      </div>
+      {# Miniaturas abajo #}
+      <div class="detalle-miniaturas d-flex flex-wrap align-items-center mt-3">
+        {% if producto.imagen %}
+          <img src="{{ producto.imagen.url }}" alt="Imagen principal" data-bs-toggle="modal" data-bs-target="#modalImgPrincipal">
+        {% endif %}
+        {% for img in producto.imagenes.all %}
+          <img src="{{ img.imagen.url }}" alt="Imagen {{ forloop.counter }}" data-bs-toggle="modal" data-bs-target="#modalImgExtra{{ forloop.counter }}">
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-5 text-center">
+      {% if producto.imagen %}
+        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="detalle-inmueble-img shadow">
+      {% else %}
+        <img src="{% static 'img/pages/app-academy-tutor-1.png' %}" alt="Sin imagen" class="detalle-inmueble-img shadow">
+      {% endif %}
+    </div>
+  </div>
+
+  {# MODAL para imagen principal #}
+  {% if producto.imagen %}
+  <div class="modal fade" id="modalImgPrincipal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" style="background:transparent; border:none;">
+        <img src="{{ producto.imagen.url }}" class="w-100 rounded-4 shadow" style="background:#fff;" alt="Imagen principal">
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {# MODALS para cada imagen extra #}
+  {% for img in producto.imagenes.all %}
+  <div class="modal fade" id="modalImgExtra{{ forloop.counter }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" style="background:transparent; border:none;">
+        <img src="{{ img.imagen.url }}" class="w-100 rounded-4 shadow" style="background:#fff;" alt="Imagen extra {{ forloop.counter }}">
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+  {# Ficha inmobiliaria profesional #}
+  <div class="detalle-inmobiliaria-box">
+    <h5><i class="ri-building-4-line"></i> Sobre la inmobiliaria <span style="color:#3465f6;">{{ producto.inmobilaria.nombre }}</span></h5>
+    <ul class="detalle-inmobiliaria-info list-unstyled mb-2">
+      <li><i class="ri-shield-star-line"></i> <strong>Plan:</strong> {{ producto.inmobilaria.get_plan_display }}</li>
+      {% if producto.inmobilaria.fecha_fundacion %}
+        <li><i class="ri-calendar-line"></i> <strong>Fundada:</strong> {{ producto.inmobilaria.fecha_fundacion|date:"d/m/Y" }}</li>
+      {% endif %}
+      <li><i class="ri-user-star-line"></i> <strong>Admins:</strong>
+        {% with admins=producto.inmobilaria.admins %}
+          {% if admins.count > 0 %}
+            {% for admin in admins %}
+              {{ admin.user.get_full_name|default:admin.user.username }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          {% else %}
+            <span class="text-muted">Sin administradores registrados</span>
+          {% endif %}
+        {% endwith %}
+      </li>
+    </ul>
+    <div class="mt-2" style="font-size:1.08rem;">
+      {% if producto.inmobilaria.trayectoria %}
+        <i class="ri-information-line" style="color:#36a3fc;"></i>
+        {{ producto.inmobilaria.trayectoria }}
+      {% else %}
+        <i class="ri-information-line" style="color:#36a3fc;"></i>
+        Inmobiliaria {{ producto.inmobilaria.nombre }} es responsable de la publicación de esta propiedad. Consulta por su experiencia y otros proyectos.
+      {% endif %}
+    </div>
+  </div>
+</div>
 
 <!--/ Basic Bootstrap Table -->
 {% endblock %}
+

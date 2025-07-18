@@ -23,10 +23,10 @@
       </button>
       <ul class="navbar-nav me-auto p-4 p-lg-0">
         <li class="nav-item">
-          <a class="nav-link fw-medium" aria-current="page" href="{% url 'front:home' %}">Home</a>
+          <a class="nav-link fw-medium {% nav_active 'front:home' %}" aria-current="page" href="{% url 'front:home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fw-medium" href="{% url 'front:ecommerce-list' %}">Tienda</a>
+          <a class="nav-link fw-medium {% nav_active 'front:ecommerce-list' %}"" href="{% url 'front:ecommerce-list' %}">Tienda</a>
         </li>
       </ul>
     </div>

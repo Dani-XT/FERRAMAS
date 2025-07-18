@@ -18,11 +18,15 @@ class ProductosAddUpdateView(PermissionRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = TemplateLayout.init(self, super().get_context_data(**kwargs))
+        pk = self.kwargs.get('pk')
+
+        producto = get_producto(pk) if pk else None
         estados = get_all_estados()
 
         context.update(
             {
                 "estados": estados,
+                "producto": producto,
             }
         )
         
@@ -34,8 +38,6 @@ class ProductosAddUpdateView(PermissionRequiredMixin, TemplateView):
             pk = self.kwargs.get('pk')
             producto = get_producto(pk) if pk else None
 
-            print("views", request.FILES)
-            
             form = ProductoAddUpdateForm(request.POST, request.FILES, instance=producto)
             if form.is_valid():
                 form.save()

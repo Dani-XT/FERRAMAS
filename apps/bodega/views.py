@@ -3,20 +3,20 @@ from web_project import TemplateLayout
 from django.views.generic import TemplateView
 from web_project.template_helpers.theme import TemplateHelper
 
-# Modelos
-from front.ecommerce.helpers import get_producto
+# Permisos
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
-class EcommerceDetailView(TemplateView):
-    
+# contrib
+from apps.productos.helpers import get_all_productos
+
+class BodegaView(PermissionRequiredMixin, TemplateView):
+    permission_required = ("auth.view_user")
+
     def get_context_data(self, **kwargs):
         context = TemplateLayout.init(self, super().get_context_data(**kwargs))
 
         context.update(
             {
-                "layout": "front",
-                "layout_path": TemplateHelper.set_layout("layout_front.html", context),
-                "active_url": self.request.path,  # Get the current url path (active URL) from request
-                "id_producto": get_producto(self.kwargs['pk'])
             }
         )
 

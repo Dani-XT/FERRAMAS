@@ -29,7 +29,9 @@ class ProductoAddUpdateForm(forms.Form):
     
     def clean_precio(self):
         precio = self.cleaned_data["precio"]
+        print("antes",precio)
         precio = limpiar_numeros_entero(precio)
+        print(precio)
 
         return precio
 
@@ -57,9 +59,7 @@ class ProductoAddUpdateForm(forms.Form):
                 status = data["status"]
             )
 
-        print("imagenes antes del for")
         for imagen in self.files.getlist('imagenes'):
-            print("imagenes en el save")
             imagen = ImagenProducto.objects.create(producto = producto, imagen = imagen)
 
         return producto

@@ -57,6 +57,9 @@ INSTALLED_APPS = [
     'apps.access.roles',
     'apps.access.permisos',
     'apps.usuarios',
+    'apps.bodega',
+    'apps.contador',
+    'apps.vendedor',
     # ----------------------------------------
     # AUTH Y SISTEMA
     # ----------------------------------------

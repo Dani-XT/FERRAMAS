@@ -23,6 +23,28 @@
       "slug": "usuarios",
       "url": "usuarios-list"
     },
+    {
+      "menu_header": "Sistema",
+      "slug": "sistema"
+    },
+    {
+      "icon": "menu-icon tf-icons ri-home-4-line",
+      "name": "Bodega",
+      "slug": "bodega-list",
+      "url": "bodega-list"
+    },
+    {
+      "icon": "menu-icon tf-icons ri-home-4-line",
+      "name": "Vendedor",
+      "slug": "vendedor-list",
+      "url": "vendedor-list"
+    },
+    {
+      "icon": "menu-icon tf-icons ri-home-4-line",
+      "name": "Contador",
+      "slug": "contador-list",
+      "url": "contador-list"
+    },
 
     {
       "menu_header": "Equipos",

@@ -11,6 +11,7 @@ from apps.utils.models import Region, Comuna, Provincia
 # Contrib
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 from datetime import datetime, date, time, timedelta
+from django.utils.text import slugify
 
 # Funciones
 # -------------------------------------------------------
@@ -34,19 +35,19 @@ def limpiar_numeros_decimal(valor):
 
 def limpiar_numeros_entero(valor):
     """
-    Limpia el valor ingresado y lo transforma a entero, si es decimal lo redondea
+    Limpia el valor ingresado y lo transforma a entero, eliminando símbolos y separadores.
     """
     if isinstance(valor, (list, tuple)) and len(valor) == 1:
         valor = valor[0]
 
     if not valor:
         return 0
-    valor = re.sub(r'[^\d,\.]', '', str(valor))
-    valor = valor.replace(',', '.')
+
+    valor = re.sub(r'[^\d]', '', str(valor))
+
     try:
-        decimal_val = Decimal(valor)
-        return int(decimal_val.to_integral_value(rounding=ROUND_HALF_UP))
-    except (ValueError, InvalidOperation):
+        return int(valor)
+    except (ValueError, TypeError):
         return 0
     
 def limpiar_texto(texto):
@@ -246,8 +247,14 @@ def validar_porcentaje(porcentaje):
     return valor
 
 # -------------------------------------------------------
-# TODO: CALCULOS
+# TODO: UTILIDADES
 # -------------------------------------------------------
+def nombre_imagen(instance, filename, upload):
+    extension = filename.split('.')[-1]
+    nombre = slugify(str(instance.producto.nombre)).replace('-', '_')
+    timestamp = int(time.time())
+    nombre_nuevo = f'{nombre}_{timestamp}.{extension}'
+    return os.path.join(upload, nombre_nuevo)
 
 # -------------------------------------------------------
 # TODO: GET GENERALES

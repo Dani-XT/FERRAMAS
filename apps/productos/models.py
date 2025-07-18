@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 from PIL import Image
+from apps.utils.utils import nombre_imagen
 
 # Create your models here.
 class Status(models.Model):
@@ -24,6 +25,6 @@ class Producto(models.Model):
 class ImagenProducto(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='imagenes')
     imagen = models.ImageField(upload_to='productos/')
-    
 
+            
 
