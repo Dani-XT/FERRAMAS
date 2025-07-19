@@ -1,5 +1,6 @@
 /**
- * App permissions list (jquery)
+
+* App permissions list (jquery)
  */
 $(function() {
     var dataTablePermisos = $('.datatables-permisos')

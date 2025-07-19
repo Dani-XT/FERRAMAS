@@ -14,10 +14,10 @@ class MedioPago(models.Model):
 class Venta(models.Model):
     carrito = models.OneToOneField(Carrito, on_delete=models.CASCADE, related_name='venta')
     cliente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ventas')
+    medio_pago = models.ForeignKey(MedioPago, on_delete=models.CASCADE, related_name='ventas')
     
     date_created = models.DateTimeField(auto_now_add=True)
     total = models.IntegerField(validators=[MinValueValidator(0)])
-    medio_pago = models.ForeignKey(MedioPago, on_delete=models.CASCADE, related_name='ventas')
     confirmada = models.BooleanField(default=False)
 
 

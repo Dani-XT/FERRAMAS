@@ -39,6 +39,11 @@ def get_modal_direcciones(request, direccion_selected=any):
 # ---------------------------------------------
 # TODO: Calculos
 # ---------------------------------------------
+def calcular_precio(request):
+    pass
+
+def calcular_precio_final(request):
+    pass
 
 # ---------------------------------------------
 # TODO: SIMULADOR

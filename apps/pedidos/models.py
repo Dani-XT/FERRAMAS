@@ -9,9 +9,15 @@ class EstadoPedido(models.Model):
     nombre = models.CharField(max_length=150)
     descripcion = models.CharField(max_length=200, blank=True, null=True)
 
+    def __str__(self):
+        return self.nombre
+
 class PedidoManager(models.Manager):
     def por_estado(self, nombre_estado):
         return self.filter(estado__nombre__iexact=nombre_estado)
+    
+    def por_usuario(self, username):
+        return self.filter(venta__cliente__username__iexact=username)
 
 class Pedido(models.Model):
     venta = models.OneToOneField(Venta, on_delete=models.CASCADE, related_name='pedido')
@@ -24,9 +30,11 @@ class Pedido(models.Model):
 
     objects = PedidoManager()
 
+    def __str__(self):
+        return f'pedido #{self.id}'
+        
     @property
     def es_entregado(self):
         return self.estado.nombre.lower() == 'entregado'
-
 
 

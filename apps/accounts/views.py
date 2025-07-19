@@ -3,22 +3,20 @@ from web_project import TemplateLayout
 from django.views.generic import TemplateView
 from web_project.template_helpers.theme import TemplateHelper
 
-# Permisos
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-# contrib
-
-class VendedorView(PermissionRequiredMixin, TemplateView):
-    permission_required = ("auth.view_user")
+class AccountsView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = TemplateLayout.init(self, super().get_context_data(**kwargs))
-        
+
         context.update(
             {
+                "usuario": self.request.user
             }
         )
-
+        
         TemplateHelper.map_context(context)
         return context
-    
+
+

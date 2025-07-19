@@ -14,6 +14,9 @@ class Carrito(models.Model):
     total_items = models.IntegerField(validators=[MinValueValidator(1)])
     total = models.IntegerField(validators=[MinValueValidator(0)])
 
+    def __str__(self):
+        return f'Carrito: {self.usuario.username} - {self.date_created}'
+
 class ItemCarrito(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name="items_carrito")
     carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE, related_name="items")
@@ -24,6 +27,9 @@ class ItemCarrito(models.Model):
 
     class Meta:
         unique_together = ('carrito', 'producto')
+
+    def __str__(self):
+        return f'Item: {self.carrito}: {self.cantidad}'
 
 
 

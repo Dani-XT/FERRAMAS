@@ -1,0 +1,84 @@
+<!-- User Card -->
+    <div class="card mb-6">
+      <div class="card-body pt-12">
+        <div class="user-avatar-section">
+          <div class=" d-flex align-items-center flex-column">
+            <img class="img-fluid rounded mb-4" src="{{ usuario.avatar.url }}" height="120" width="120" alt="User avatar" />
+            <div class="user-info text-center">
+              <h5>{{usuario.get_full_name}}</h5>
+              <span class="badge bg-label-danger rounded-pill">Author</span>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-around flex-wrap my-6 gap-0 gap-md-3 gap-lg-4">
+          <div class="d-flex align-items-center me-5 gap-4">
+            <div class="avatar">
+              <div class="avatar-initial bg-label-primary rounded">
+                <i class='ri-check-line ri-24px'></i>
+              </div>
+            </div>
+            <div>
+              <h5 class="mb-0">1.23k</h5>
+              <span>Task Done</span>
+            </div>
+          </div>
+          <div class="d-flex align-items-center gap-4">
+            <div class="avatar">
+              <div class="avatar-initial bg-label-primary rounded">
+                <i class='ri-briefcase-line ri-24px'></i>
+              </div>
+            </div>
+            <div>
+              <h5 class="mb-0">568</h5>
+              <span>Project Done</span>
+            </div>
+          </div>
+        </div>
+        <h5 class="pb-4 border-bottom mb-4">Detalles</h5>
+        <div class="info-container">
+          <ul class="list-unstyled mb-6">
+            <li class="mb-2">
+              <span class="h6">Nombre:</span>
+              <span>{{usuario.get_full_name}}</span>
+            </li>
+            <li class="mb-2">
+              <span class="h6">Email:</span>
+              <span>{{usuario.email}}</span>
+            </li>
+            <li class="mb-2">
+              <span class="h6">Estado:</span>
+              {% if usuario.is_active %}
+              <span class="badge bg-label-success rounded-pill">Active</span>
+              {% else %}
+              <span class="badge bg-label-danger rounded-pill">Inactivo</span>
+              {% endif %}
+            </li>
+            <li class="mb-2">
+              <span class="h6">Grupo:</span>
+              <span>{{usuario.groups}}</span>
+            </li>
+            <li class="mb-2">
+              <span class="h6">Tax id:</span>
+              <span>Tax-8965</span>
+            </li>
+            <li class="mb-2">
+              <span class="h6">Contact:</span>
+              <span>(123) 456-7890</span>
+            </li>
+            <li class="mb-2">
+              <span class="h6">Languages:</span>
+              <span>French</span>
+            </li>
+            <li class="mb-2">
+              <span class="h6">Country:</span>
+              <span>England</span>
+            </li>
+          </ul>
+          <div class="d-flex justify-content-center">
+            <a href="javascript:;" class="btn btn-primary me-4" data-bs-target="#editUser" data-bs-toggle="modal">Edit</a>
+            <a href="javascript:;" class="btn btn-outline-danger suspend-user">Suspend</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /User Card -->

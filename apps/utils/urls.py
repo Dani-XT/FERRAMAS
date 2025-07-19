@@ -9,7 +9,7 @@ from apps.utils.views import get_modal_icono
 # -------------------------------------------------------
 # TODO: CALCULOS
 # -------------------------------------------------------
-
+from apps.utils.views import calcular_precio, calcular_precio_final
 # -------------------------------------------------------
 # TODO: COMPONENTES
 # -------------------------------------------------------
@@ -35,6 +35,16 @@ urlpatterns = [
     # -------------------------------------------------------
     # TODO: CALCULOS
     # -------------------------------------------------------
+    path(
+        "calcular-precio/",
+        calcular_precio,
+        name="calcular-precio",
+    ),
+    path(
+        "calcular-precio-final/",
+        calcular_precio_final,
+        name="calcular-precio-final",
+    ),
 
     # -------------------------------------------------------
     # TODO: COMPONENTES
@@ -49,4 +59,5 @@ urlpatterns = [
         login_required(get_permisos_por_contenttype), 
         name="get-permisos-por-contenttype" 
     )
+
 ]

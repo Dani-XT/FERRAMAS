@@ -1,10 +1,5 @@
-/**
- * Page User List
- */
-
 'use strict';
 
-// Datatable (jquery)
 $(function () {
   let borderColor, bodyBg, headingColor;
 
@@ -17,21 +12,21 @@ $(function () {
     bodyBg = config.colors.bodyBg;
     headingColor = config.colors.headingColor;
   }
+  // Variables for DataTable
+  var dt_transaction_table = $('.datatables-transaction');
+  var toastElements = document.querySelectorAll('.toast');
 
-  // Variable declaration for table
-  var dt_user_table = $('.datatables-users')
+  if (toastElements) {
+    toastElements.forEach(function (element) {
+      var toast = new bootstrap.Toast(element);
+      toast.show();
+    });
+  }
 
-  // Users datatable
-  if (dt_user_table.length) {
-    var dt_user = dt_user_table.DataTable({
-      
-      // TODO: Columna, orden
-      responsive: {
-        details: false
-      },
-      order: [[1, 'asc']],
-
-      // TODO: DOOM DE MENU DONDE EXPORTAR PDF Y LA PAGINACION
+  // Transactions DataTable
+  if (dt_transaction_table.length) {
+    var dt_transaction = dt_transaction_table.DataTable({
+      order: [[1, 'desc']],
       dom:
         '<"row"' +
         '<"col-md-2"<l>>' +
@@ -44,13 +39,13 @@ $(function () {
       language: {
         sLengthMenu: '_MENU_',
         search: '',
-        searchPlaceholder: 'Search User',
+        searchPlaceholder: 'Search..',
         paginate: {
           next: '<i class="ri-arrow-right-s-line"></i>',
           previous: '<i class="ri-arrow-left-s-line"></i>'
         }
       },
-      // TODO: BOTON EXPORTAR
+      // Buttons with Dropdown
       buttons: [
         {
           extend: 'collection',
@@ -62,7 +57,7 @@ $(function () {
               text: '<i class="ri-printer-line me-1" ></i>Print',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4, 5],
+                columns: [1, 2, 3, 4, 5, 6],
                 // prevent avatar to be print
                 format: {
                   body: function (inner, coldex, rowdex) {
@@ -99,7 +94,7 @@ $(function () {
               text: '<i class="ri-file-text-line me-1" ></i>Csv',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4, 5],
+                columns: [1, 2, 3, 4, 5, 6],
                 // prevent avatar to be display
                 format: {
                   body: function (inner, coldex, rowdex) {
@@ -123,7 +118,7 @@ $(function () {
               text: '<i class="ri-file-excel-line me-1"></i>Excel',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4, 5],
+                columns: [1, 2, 3, 4, 5, 6],
                 // prevent avatar to be display
                 format: {
                   body: function (inner, coldex, rowdex) {
@@ -147,7 +142,7 @@ $(function () {
               text: '<i class="ri-file-pdf-line me-1"></i>Pdf',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4, 5],
+                columns: [1, 2, 3, 4, 5, 6],
                 // prevent avatar to be display
                 format: {
                   body: function (inner, coldex, rowdex) {
@@ -171,7 +166,7 @@ $(function () {
               text: '<i class="ri-file-copy-line me-1"></i>Copy',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4, 5],
+                columns: [1, 2, 3, 4, 5, 6],
                 // prevent avatar to be display
                 format: {
                   body: function (inner, coldex, rowdex) {
@@ -200,57 +195,89 @@ $(function () {
           }
         }
       ],
-      // TODO: DEFINICION COLUMNA
+
+      // TODO: RESPONSIVE POPUP NOSE
+      responsive: true,
+      // For responsive popup
+      rowReorder: {
+        selector: 'td:nth-child(2)'
+      },
+      // For responsive popup button and responsive priority for user name
       columnDefs: [
         {
-          // Checkbox
-          targets: 0,
+          // For Responsive Popup Button (plus icon)
+          className: 'control',
+          searchable: false,
           orderable: false,
-          render: function () {
-            return '<input type="checkbox" class="dt-checkboxes form-check-input">';
-          },
-          checkboxes: {
-            selectAllRender: '<input type="checkbox" class="form-check-input">'
-          },
-          responsivePriority: 2
-        },
-        {
-          // ID
-          targets: 1,
-          responsivePriority: 0,
-          visible: false,
-        },
-        {
-          // AVATAR - Usuario y RUT
-          targets: 2,
           responsivePriority: 2,
+          targets: 0,
+          render: function (data, type, full, meta) {
+            return '';
+          }
         },
         {
-          // EMAIL
-          targets: 3,
-          responsivePriority: 3,
+          // For Id
+          targets: 1,
+          responsivePriority: 3
         },
         {
-          // MODALIDAD
-          targets: 4,
-          responsivePriority: 4,
+          // For Customer Name
+          targets: 2,
+          responsivePriority: 4
         },
         {
-          // SEDE
+          // For Amount
           targets: 5,
-          responsivePriority: 5,
+          responsivePriority: 5
         },
         {
-          // EDIFICIO
+          // For Status
           targets: 6,
-          responsivePriority: 6,
+          responsivePriority: 6
         },
         {
-          // UBICACION
           targets: 7,
-          responsivePriority: 7,
-        },
+          title: 'Actions',
+          searchable: false,
+          orderable: false,
+          responsivePriority: 1
+        }
       ],
+      // For responsive popup
+      responsive: {
+        details: {
+          display: $.fn.dataTable.Responsive.display.modal({
+            header: function (row) {
+              var data = row.data();
+              return 'Transaction Detail' + ' ' + data[2];
+            }
+          }),
+          type: 'column',
+          renderer: function (api, rowIdx, columns) {
+            var data = $.map(columns, function (col, i) {
+              return col.title !== '' // ? Do not show row in modal popup if title is blank (for check box)
+                ? '<tr data-dt-row="' +
+                    col.rowIndex +
+                    '" data-dt-column="' +
+                    col.columnIndex +
+                    '">' +
+                    '<td>' +
+                    col.title +
+                    ':' +
+                    '</td> ' +
+                    '<td>' +
+                    col.data +
+                    '</td>' +
+                    '</tr>'
+                : '';
+            }).join('');
+
+            return data ? $('<table class="table"/><tbody />').append(data) : false;
+          }
+        }
+      }
     });
+    $('.dataTables_filter input').addClass('ms-0');
+    $('div.dataTables_wrapper .dataTables_filter').addClass('mt-0 mt-md-5');
   }
 });
