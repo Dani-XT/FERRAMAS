@@ -80,7 +80,7 @@ def admin_required(view_func):
 # For checking if the user group is client
 @register.filter(name="is_client")
 def is_client(user):
-    return user.groups.filter(name="client").exists()
+    return user.groups.filter(name="Cliente").exists()
 
 @register.filter(name="client_required")
 def client_required(view_func):
